@@ -1,0 +1,51 @@
+.servicesGrid {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2rem;
+}
+
+.serviceCard {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
+}
+
+.serviceCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+}
+
+.serviceCard img {
+  width: 100px;
+  height: 200px;
+  flex-shrink: 0;
+  object-fit: contain;
+  object-position: center;
+}
+
+.serviceContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.serviceContent h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1a202c;
+  margin: 0;
+}
+
+.serviceContent p {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #444;
+  line-height: 1.6;
+  margin: 0;
+}

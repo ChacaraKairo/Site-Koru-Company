@@ -1,0 +1,12 @@
+.aboutContent {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+@media (min-width: 768px) {
+  .aboutContent {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

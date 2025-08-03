@@ -1,0 +1,44 @@
+.contactForm {
+  flex: 1 1 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contactForm label {
+  font-weight: 600;
+  color: #333;
+}
+
+.contactForm input,
+.contactForm textarea {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  resize: vertical;
+  color: black; /* texto preto */
+}
+
+.contactForm input:focus,
+.contactForm textarea:focus {
+  outline: none;
+  border-color: #3182ce;
+  box-shadow: 0 0 5px rgba(49, 130, 206, 0.5);
+}
+
+.submitBtn {
+  background-color: #3182ce;
+  color: white;
+  border: none;
+  padding: 0.85rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: flex-start;
+}
+
+.submitBtn:hover {
+  background-color: #2c6cb0;
+}

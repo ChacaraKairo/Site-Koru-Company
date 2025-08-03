@@ -1,0 +1,16 @@
+.socialIcons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.socialIcons a {
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.socialIcons a:hover {
+  color: #3182ce;
+}

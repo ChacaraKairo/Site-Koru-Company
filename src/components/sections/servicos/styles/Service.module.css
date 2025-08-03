@@ -1,0 +1,32 @@
+.servicesSection {
+  padding: 4rem 1rem;
+  background-color: #f9f9f9;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #1a202c;
+}
+
+.sectionSubtitle {
+  text-align: center;
+  font-size: 1.125rem;
+  color: #555;
+  margin-bottom: 3rem;
+  max-width: 700px;
+  margin-inline: auto;
+}
+
+/* Alteração para coluna única fixa */
+.servicesGrid {
+  display: flex; /* flex ao invés de grid */
+  flex-direction: column; /* coluna única */
+  gap: 2rem;
+}

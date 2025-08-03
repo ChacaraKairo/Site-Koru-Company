@@ -1,0 +1,27 @@
+.contacts {
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+.contacts p {
+  margin: 0.3rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.icon {
+  font-size: 1rem;
+  color: #ffffffcc;
+}
+
+.clickable {
+  cursor: pointer;
+  color: #3182ce;
+  transition: color 0.3s ease;
+}
+
+.clickable:hover {
+  color: #2c6cb0;
+}

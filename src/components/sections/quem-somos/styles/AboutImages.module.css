@@ -1,0 +1,63 @@
+.aboutImages {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 2rem;
+  width: 100%;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 1 1 300px;
+  max-width: 500px;
+  background-color: #f3f4f6;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card:hover img {
+  transform: scale(1.1); /* efeito de zoom */
+}
+
+.ceoPhoto {
+  object-fit: cover;
+  object-position: top;
+}
+
+.caption {
+  padding: 1rem;
+  font-size: 0.95rem;
+  text-align: center;
+  color: #1f2937;
+  background-color: #f3f4f6;
+}
+
+@media (prefers-color-scheme: dark) {
+  .card {
+    background-color: #27272a;
+    box-shadow: 0 4px 14px rgba(255, 255, 255, 0.05);
+  }
+
+  .caption {
+    background-color: #27272a;
+    color: #f4f4f5;
+  }
+}

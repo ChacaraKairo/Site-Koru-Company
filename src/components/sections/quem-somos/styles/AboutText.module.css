@@ -1,0 +1,7 @@
+.aboutText {
+  flex: 1;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #333;
+  height: 80%;
+}
