@@ -31,7 +31,7 @@ html {
 /* Limita largura mínima da página e permite scroll horizontal se necessário */
 html,
 body {
-  min-width: 400px;
+  min-width: 100px;
   overflow-x: auto;
 }
 

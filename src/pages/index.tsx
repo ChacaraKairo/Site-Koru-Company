@@ -1,11 +1,12 @@
 'use client';
 
 import { Header } from '@/components/header/Header';
-import { Carrossel } from '@/components/carrossel/Carrossel';
 import { About } from '@/components/sections/quem-somos/About';
 import { SectionServices } from '@/components/sections/servicos/SectionServices';
 import { SectionContact } from '@/components/sections/contato/SectionContact';
 import { Footer } from '@/components/footer/Footer';
+import Carrossel from '@/components/carrossel/Carrossel';
+import BotaoWhatsapp from '@/components/botao-acao/botato';
 
 export default function Home() {
   return (
@@ -15,12 +16,18 @@ export default function Home() {
         <section id="hero" className="mb-12">
           <Carrossel />
         </section>
+        <section className="contrate">
+          <BotaoWhatsapp />
+        </section>
 
         <section
           id="about"
           className="px-6 max-w-screen-xl mx-auto"
         >
           <About />
+        </section>
+        <section className="contrate">
+          <BotaoWhatsapp />
         </section>
 
         <section
@@ -29,7 +36,9 @@ export default function Home() {
         >
           <SectionServices />
         </section>
-
+        <section className="contrate">
+          <BotaoWhatsapp />
+        </section>
         <section
           id="contact"
           className="px-6 max-w-screen-xl mx-auto"

@@ -1,36 +1,35 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState, useEffect } from 'react';
 
-export function useCarrossel(totalSlides: number) {
-  const [indiceAtual, setIndiceAtual] = useState(0);
-  const carrosselRef = useRef<HTMLDivElement>(null);
+const useCarrossel = (length: number) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const mostrarSlide = (indice: number) => {
-    let novoIndice = indice;
-    if (indice >= totalSlides) novoIndice = 0;
-    if (indice < 0) novoIndice = totalSlides - 1;
-    setIndiceAtual(novoIndice);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex(
+        (prevIndex) => (prevIndex + 1) % length,
+      );
+    }, 4000); // troca automática a cada 4s
+
+    return () => clearInterval(interval);
+  }, [length]);
+
+  const goToNext = () => {
+    setCurrentIndex(
+      (prevIndex) => (prevIndex + 1) % length,
+    );
   };
 
-  const avancarSlide = () => mostrarSlide(indiceAtual + 1);
-  const voltarSlide = () => mostrarSlide(indiceAtual - 1);
-
-  useEffect(() => {
-    const intervalo = setInterval(avancarSlide, 10000);
-    return () => clearInterval(intervalo);
-  }, [indiceAtual]);
-
-  useEffect(() => {
-    if (carrosselRef.current) {
-      carrosselRef.current.style.transform = `translateX(-${
-        indiceAtual * 100
-      }%)`;
-    }
-  }, [indiceAtual]);
+  const goToPrev = () => {
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + length) % length,
+    );
+  };
 
   return {
-    indiceAtual,
-    carrosselRef,
-    avancarSlide,
-    voltarSlide,
+    currentIndex,
+    goToNext,
+    goToPrev,
   };
-}
+};
+
+export default useCarrossel;
