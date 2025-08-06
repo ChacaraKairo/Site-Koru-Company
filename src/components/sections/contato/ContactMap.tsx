@@ -5,14 +5,14 @@ export function ContactMap() {
   return (
     <div className={styles.mapContainer}>
       <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.823965859212!2d-47.2118532!3d-23.0880084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8b5853ac5290b%3A0x85a02bc78d0e0e32!2sTerminal%20Urbano%20Central!5e0!3m2!1spt-BR!2sbr!4v1722647041435!5m2!1spt-BR!2sbr"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d259264.3901634863!2d-47.2772077!3d-23.1117627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8b4a92532f027%3A0x261346b50e81af6c!2sIndaiatuba%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1722964866501!5m2!1spt-BR!2sbr"
         width="100%"
         height="300"
         style={{ border: 0 }}
         allowFullScreen
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
-        title="Terminal Urbano de Indaiatuba"
+        title="Indaiatuba - SP"
       />
     </div>
   );
