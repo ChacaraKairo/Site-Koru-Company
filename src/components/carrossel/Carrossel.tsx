@@ -23,7 +23,7 @@ const Carrossel = () => {
 
   return (
     <div
-      className="relative w-full max-w-4xl h-[600px] mx-auto mt-10 overflow-hidden rounded-xl shadow-lg cursor-pointer"
+      className="relative w-full max-w-full aspect-[28/9] mx-auto mt-10 mb-0 pb-0 overflow-hidden rounded-xl shadow-lg cursor-pointer"
       onClick={handleClick}
     >
       {carrosselData.map((slide, index) => (

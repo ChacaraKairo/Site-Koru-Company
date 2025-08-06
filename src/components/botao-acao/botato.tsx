@@ -8,12 +8,13 @@ const BotaoWhatsapp = () => {
   const link = `https://wa.me/${numero}?text=${mensagem}`;
 
   return (
-    <div className="w-full flex justify-center my-16">
+    <div className="w-full flex justify-center my-2">
+      {/* Margem vertical ainda menor */}
       <a
         href={link}
         target="_blank"
         rel="noopener noreferrer"
-        className="bg-green-500 hover:bg-green-600 text-white font-extrabold py-5 px-8 rounded-full shadow-2xl text-xl sm:text-2xl transition-transform duration-300 transform hover:scale-105 animate-pulse flex items-center gap-3"
+        className="bg-green-500 hover:bg-green-600 text-white font-extrabold py-4 px-8 rounded-full shadow-2xl text-lg sm:text-xl transition-transform duration-300 transform hover:scale-105 animate-pulse flex items-center gap-3"
       >
         <span className="text-3xl">📲</span>
         <span>CLIQUE AQUI E CONTRATE NOSSOS SERVIÇOS!</span>
