@@ -6,7 +6,7 @@ const carrosselData = [
   },
   {
     id: 2,
-    imageUrl: 'imagens/src/a1.png',
+    imageUrl: 'imagens/src/a2.jpg',
     alt: 'Imagem 2',
   },
   {
