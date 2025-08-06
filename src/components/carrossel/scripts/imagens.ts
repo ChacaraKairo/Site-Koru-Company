@@ -1,32 +1,32 @@
 const carrosselData = [
   {
     id: 1,
-    imageUrl: 'imagens/src/a1.png',
+    imageUrl: 'imagens/src/1.png',
     alt: 'Imagem 1',
   },
   {
     id: 2,
-    imageUrl: 'imagens/src/a2.jpg',
+    imageUrl: 'imagens/src/4.png',
     alt: 'Imagem 2',
   },
   {
     id: 3,
-    imageUrl: 'imagens/src/a1.png',
+    imageUrl: 'imagens/src/2.png',
     alt: 'Imagem 3',
   },
   {
     id: 4,
-    imageUrl: 'imagens/src/a1.png',
+    imageUrl: 'imagens/src/5.png',
     alt: 'Imagem 1',
   },
   {
     id: 5,
-    imageUrl: 'imagens/src/a1.png',
+    imageUrl: 'imagens/src/3.png',
     alt: 'Imagem 2',
   },
   {
     id: 6,
-    imageUrl: 'imagens/src/a1.png',
+    imageUrl: 'imagens/src/6.png',
     alt: 'Imagem 3',
   },
 ];
