@@ -1,12 +1,13 @@
 import { useState } from 'react';
 
+// A única alteração necessária é aqui, na interface.
 export interface FormData {
   name: string;
   company: string;
   phone: string;
   email: string;
-  message: string;
-  endereco: string; // Alterado de "address" para "endereco"
+  message?: string; // Adicionado '?' para tornar a propriedade opcional
+  endereco: string;
 }
 
 export function useContactForm() {
@@ -15,8 +16,8 @@ export function useContactForm() {
     company: '',
     phone: '',
     email: '',
-    message: '',
-    endereco: '', // Corrigido aqui também
+    message: '', // Você ainda pode inicializar com um valor padrão
+    endereco: '',
   });
 
   // Atualiza o estado conforme o usuário digita
