@@ -18,13 +18,11 @@ export default async function handler(
   const { name, company, phone, email, message, endereco } =
     req.body;
 
-  // Validação básica
-  if (!name || !email || !message) {
-    return res
-      .status(400)
-      .json({
-        error: 'Name, email, and message are required',
-      });
+  // Validação básica (message agora é opcional)
+  if (!name || !email) {
+    return res.status(400).json({
+      error: 'Nome e email são obrigatórios',
+    });
   }
 
   try {
