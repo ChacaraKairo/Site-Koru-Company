@@ -1,9 +1,9 @@
 // Arquivo: pages/api/contact.ts
 
-import { PrismaClient } from '@/generated/prisma';
+// import { PrismaClient } from '@/generated/prisma'; // REMOVIDO
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-const prisma = new PrismaClient();
+// const prisma = new PrismaClient(); // REMOVIDO
 
 // Interface para garantir a tipagem dos dados do formulário
 // Baseado em: src/components/sections/contato/scripts/useContactForm.ts
@@ -107,8 +107,7 @@ export default async function handler(
   }
 
   // Tipamos o body da requisição
-  const { name, company, phone, email, message, endereco } =
-    req.body as ContactFormData;
+  const { name, email } = req.body as ContactFormData;
 
   // Validação básica (message agora é opcional)
   if (!name || !email) {
@@ -118,32 +117,27 @@ export default async function handler(
   }
 
   try {
-    // 1. Salva o contato no banco de dados
-    const contatoCriado = await prisma.contacts.create({
-      data: {
-        name,
-        company: company || null, // Garante null se for string vazia
-        phone,
-        email,
-        message: message || null, // Garante null se for string vazia
-        endereco: endereco || null, // Garante null se for string vazia
-        created_at: new Date(),
-      },
-    });
-
-    // 2. Envia a notificação para o Telegram (NOVA PARTE)
-    // Usamos 'await' para garantir que ele tente enviar antes de responder ao usuário,
-    // mas a função tem seu próprio try/catch, então ela não vai quebrar a API.
+    // 1. Envia a notificação para o Telegram
+    // A função sendTelegramNotification já lida com seus próprios erros.
     await sendTelegramNotification(
       req.body as ContactFormData,
     );
 
-    // 3. Retorna sucesso para o frontend
-    return res.status(201).json(contatoCriado);
+    // 2. Retorna sucesso para o frontend
+    // Alterado de 201 (Created) para 200 (OK) pois nada está sendo criado no banco.
+    return res
+      .status(200)
+      .json({ message: 'Mensagem enviada com sucesso!' });
   } catch (error) {
-    console.error('Erro ao salvar contato:', error);
+    // Este catch agora é para erros inesperados no handler
+    console.error(
+      'Erro inesperado no handler da API:',
+      error,
+    );
     return res
       .status(500)
-      .json({ error: 'Erro ao salvar os dados' });
+      .json({
+        error: 'Erro interno ao processar a solicitação',
+      });
   }
 }

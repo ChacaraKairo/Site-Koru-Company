@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+// Arquivo: src/components/sections/contato/ContactForm.tsx
+import React, { useEffect } from 'react'; // useEffect não é mais usado aqui, mas deixei o import
 import styles from './styles/ContactForm.module.css';
 import { useContactForm } from './scripts/useContactForm';
 
@@ -7,43 +8,13 @@ export function ContactForm() {
     formData,
     handleChange,
     handleSubmit,
-    setFormData,
+    // setFormData, // Não precisamos mais do setFormData aqui
   } = useContactForm();
 
-  useEffect(() => {
-    if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        async (position) => {
-          const { latitude, longitude } = position.coords;
-
-          try {
-            const response = await fetch(
-              `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`,
-            );
-            const data = await response.json();
-
-            const endereco = data.display_name || ''; // Endereço completo
-
-            setFormData((prev) => ({
-              ...prev,
-              endereco,
-            }));
-          } catch (error) {
-            console.error(
-              'Erro ao buscar o endereço:',
-              error,
-            );
-          }
-        },
-        (error) => {
-          console.error(
-            'Erro ao obter localização:',
-            error.message,
-          );
-        },
-      );
-    }
-  }, []);
+  //
+  // O useEffect() QUE ESTAVA AQUI FOI REMOVIDO!
+  // A lógica agora está dentro do 'handleSubmit' no hook.
+  //
 
   return (
     <form
@@ -94,11 +65,12 @@ export function ContactForm() {
         id="message"
         name="message"
         rows={5}
-        value={formData.message}
+        value={formData.message || ''} // Garante que é uma string
         onChange={handleChange}
       />
 
-      {/* Campo oculto para o endereço completo */}
+      {/* O campo oculto não é mais necessário, pois o 'handleSubmit' cuida disso,
+          mas pode deixar se quiser. Ele apenas não terá valor. */}
       <input
         type="hidden"
         name="endereco"
