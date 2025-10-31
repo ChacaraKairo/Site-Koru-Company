@@ -1,7 +1,7 @@
 import React from 'react';
 
 const BotaoWhatsapp = () => {
-  const numero = '5549989233265'; // Substitua pelo seu número com DDI
+  const numero = '5519986011419'; // Substitua pelo seu número com DDI
   const mensagem = encodeURIComponent(
     'Olá! Tenho interesse em contratar os serviços da Koru.',
   );
