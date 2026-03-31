@@ -10,6 +10,10 @@ export default function Document() {
     <Html lang="pt-br" className="scroll-smooth">
       <Head>
         {/* --- Fontes --- */}
+        <meta
+          name="google-site-verification"
+          content="google-site-verification=Kw3L50vzkRaIgwqU28dkCHZAnYb8yyUCN07EIs_Hd98"
+        />
         <link
           rel="preconnect"
           href="https://fonts.googleapis.com"
