@@ -19,9 +19,7 @@ export function ContactInfo({ onCopyPhone }: Props) {
         </a>
       </p>
       <p onClick={onCopyPhone} className={styles.clickable}>
-        <FaPhoneAlt className={styles.icon} /> +55 (49)
-        98923-3265
-      </p>
+        <FaPhoneAlt className={styles.icon} /> +55 (19) 98601-1419 </p>
     </div>
   );
 }
