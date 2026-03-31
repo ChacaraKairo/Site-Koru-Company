@@ -12,7 +12,7 @@ export default function Document() {
         {/* --- Fontes --- */}
         <meta
           name="google-site-verification"
-          content="google-site-verification=Kw3L50vzkRaIgwqU28dkCHZAnYb8yyUCN07EIs_Hd98"
+          content="P8VWrEo0BhVfrSc_Ni7czmNmoYDFplAJHWVFhiV-i6M"
         />
         <link
           rel="preconnect"
