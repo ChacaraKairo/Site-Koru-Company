@@ -14,6 +14,10 @@ export default function Document() {
           name="google-site-verification"
           content="P8VWrEo0BhVfrSc_Ni7czmNmoYDFplAJHWVFhiV-i6M"
         />
+        <meta
+          name="google-site-verification"
+          content="zsNHXyx-gNjxd1ym6QRAW__MEcW_e06zo-__wYM1OLE"
+        />
         <link
           rel="preconnect"
           href="https://fonts.googleapis.com"
