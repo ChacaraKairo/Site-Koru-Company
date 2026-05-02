@@ -53,6 +53,12 @@
 }
 
 @media (max-width: 720px) {
+  .header {
+    background: rgba(5, 5, 5, 0.92);
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(18px);
+  }
+
   .nav {
     min-height: 66px;
   }

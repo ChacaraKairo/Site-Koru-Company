@@ -1,4 +1,6 @@
 .mobileMenuButton {
+  position: relative;
+  z-index: 70;
   display: none;
   width: 42px;
   height: 42px;
@@ -6,7 +8,7 @@
   gap: 5px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.08);
   cursor: pointer;
 }
 
@@ -31,17 +33,22 @@
 .drawer {
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: 60;
   display: none;
-  background: rgba(5, 5, 5, 0.94);
-  backdrop-filter: blur(22px);
+  background:
+    radial-gradient(circle at 78% 18%, rgba(184, 242, 230, 0.1), transparent 18rem),
+    #050505;
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  transition: opacity 220ms ease;
+  transition:
+    opacity 220ms ease,
+    visibility 220ms ease;
 }
 
 .drawerOpen {
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
 }
 
@@ -53,7 +60,7 @@
   flex-direction: column;
   justify-content: center;
   gap: 2.2rem;
-  padding: 5rem 0 2rem;
+  padding: 6.5rem 0 2rem;
 }
 
 .drawerNavList {
