@@ -34,12 +34,14 @@
 }
 
 .navList a:hover,
-.navList a:focus-visible {
+.navList a:focus-visible,
+.navList a[data-active='true'] {
   color: #ffffff;
 }
 
 .navList a:hover::after,
-.navList a:focus-visible::after {
+.navList a:focus-visible::after,
+.navList a[data-active='true']::after {
   transform: scaleX(1);
 }
 

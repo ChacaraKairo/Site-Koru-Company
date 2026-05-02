@@ -1,14 +1,24 @@
 import { CTAButton } from '@/components/ui/CTAButton';
 import { Container } from '@/components/ui/Container';
+import {
+  createWhatsAppLink,
+  diagnosticMessage,
+} from '@/config/contact';
 import styles from './HeroSection.module.css';
 
-const whatsappLink =
-  'https://wa.me/5519986011419?text=Ol%C3%A1%21%20Tenho%20interesse%20em%20agendar%20um%20diagn%C3%B3stico%20com%20a%20Koru%20Company.';
+const whatsappLink = createWhatsAppLink(diagnosticMessage);
 
 const markers = [
-  'Sistemas sob medida',
-  'Automação de processos',
-  'Dados para decisão',
+  'Menos tarefas manuais',
+  'Mais controle operacional',
+  'Decisões com dados reais',
+];
+
+const mockupItems = [
+  'Operações',
+  'Automações',
+  'Dashboards',
+  'Sistemas internos',
 ];
 
 export function HeroSection() {
@@ -18,21 +28,26 @@ export function HeroSection() {
         <div className={styles.content}>
           <p className={styles.eyebrow}>Software house em Indaiatuba - SP</p>
           <h1>
-            Soluções digitais para empresas que querem operar com
-            mais inteligência.
+            Transformamos processos manuais em sistemas, automações e
+            dados para decisão.
           </h1>
           <p className={styles.subtitle}>
-            A Koru desenvolve sistemas, automações e plataformas sob
-            medida para transformar processos manuais em eficiência,
-            controle e crescimento.
+            Para pequenas e médias empresas que precisam organizar
+            processos, automatizar tarefas e crescer com mais controle.
           </p>
           <div className={styles.actions}>
-            <CTAButton href={whatsappLink}>Agendar diagnóstico</CTAButton>
-            <CTAButton href="#solutions" variant="secondary">
+            <CTAButton href={whatsappLink} fullWidthOnMobile>
+              Agendar diagnóstico
+            </CTAButton>
+            <CTAButton href="#solutions" variant="secondary" fullWidthOnMobile>
               Conhecer soluções
             </CTAButton>
           </div>
-          <ul className={styles.markers} aria-label="Especialidades da Koru">
+          <p className={styles.microcopy}>
+            Uma conversa rápida para entender sua operação e mapear
+            oportunidades de automação, sistemas ou dados.
+          </p>
+          <ul className={styles.markers} aria-label="Benefícios da Koru">
             {markers.map((marker) => (
               <li key={marker}>{marker}</li>
             ))}
@@ -45,13 +60,10 @@ export function HeroSection() {
             <span />
           </div>
           <div className={styles.mockupBody}>
-            <div className={styles.metric}>
-              <span>Fluxos ativos</span>
-              <strong>24</strong>
-            </div>
-            <div className={styles.metric}>
-              <span>Tempo poupado</span>
-              <strong>+38%</strong>
+            <div className={styles.mockupList}>
+              {mockupItems.map((item) => (
+                <span key={item}>{item}</span>
+              ))}
             </div>
             <div className={styles.chart}>
               <i />
@@ -62,6 +74,9 @@ export function HeroSection() {
             </div>
           </div>
         </div>
+        <a href="#problems" className={styles.scrollCue}>
+          Role para explorar
+        </a>
       </Container>
     </section>
   );

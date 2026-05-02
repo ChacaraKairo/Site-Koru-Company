@@ -1,9 +1,11 @@
 import Link from 'next/link';
+import { CONTACT, createWhatsAppLink, diagnosticMessage } from '@/config/contact';
 import { SocialLinks } from './SocialLinks';
 import styles from './styles/Footer.module.css';
 
 const links = [
   { href: '#hero', label: 'Início' },
+  { href: '#problems', label: 'Problemas' },
   { href: '#solutions', label: 'Soluções' },
   { href: '#process', label: 'Processo' },
   { href: '#about', label: 'Sobre' },
@@ -32,16 +34,14 @@ export function Footer() {
 
         <div className={styles.contact}>
           <a
-            href="https://wa.me/5519986011419"
+            href={createWhatsAppLink(diagnosticMessage)}
             target="_blank"
             rel="noopener noreferrer"
           >
             WhatsApp
           </a>
-          <a href="mailto:korutecnologia@gmail.com">
-            korutecnologia@gmail.com
-          </a>
-          <span>Indaiatuba - SP</span>
+          <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
+          <span>{CONTACT.city}</span>
         </div>
 
         <SocialLinks />

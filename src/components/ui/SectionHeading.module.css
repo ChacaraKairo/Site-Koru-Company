@@ -25,7 +25,7 @@
 
 .subtitle {
   margin: 1.2rem 0 0;
-  color: rgba(255, 255, 255, 0.68);
+  color: rgba(255, 255, 255, 0.76);
   font-size: clamp(1rem, 2vw, 1.18rem);
   line-height: 1.7;
 }

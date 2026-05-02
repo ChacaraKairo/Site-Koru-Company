@@ -4,6 +4,7 @@ import {
   FaLinkedin,
   FaWhatsapp,
 } from 'react-icons/fa';
+import { createWhatsAppLink, diagnosticMessage } from '@/config/contact';
 import styles from './styles/SocialLinks.module.css';
 
 export function SocialLinks() {
@@ -34,7 +35,7 @@ export function SocialLinks() {
         <FaFacebook />
       </a>
       <a
-        href="https://wa.me/5519986011419"
+        href={createWhatsAppLink(diagnosticMessage)}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="WhatsApp da Koru Company"

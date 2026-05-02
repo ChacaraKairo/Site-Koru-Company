@@ -14,6 +14,10 @@ export function ContactForm() {
 
   return (
     <form className={styles.contactForm} onSubmit={handleSubmit}>
+      <p className={styles.notice}>
+        Ao enviar, também abriremos o WhatsApp com a mensagem pronta
+        para agilizar o atendimento.
+      </p>
       <label htmlFor="name">Nome *</label>
       <input
         type="text"
@@ -41,6 +45,8 @@ export function ContactForm() {
         id="phone"
         name="phone"
         required
+        pattern="[\d\s()+.-]{10,20}"
+        title="Informe um telefone válido com DDD."
         autoComplete="tel"
         value={formData.phone}
         onChange={handleChange}
@@ -62,6 +68,7 @@ export function ContactForm() {
         id="message"
         name="message"
         rows={5}
+        placeholder="Conte brevemente o processo, sistema, automação ou desafio que você quer resolver."
         value={formData.message || ''}
         onChange={handleChange}
       />

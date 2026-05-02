@@ -1,7 +1,7 @@
 .footer {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  background: #050505;
-  color: rgba(255, 255, 255, 0.64);
+  background: #0d0f12;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .container {
@@ -50,7 +50,7 @@
   margin: 1rem 0 0;
   padding-top: 1.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.42);
+  color: rgba(255, 255, 255, 0.52);
   font-size: 0.9rem;
 }
 

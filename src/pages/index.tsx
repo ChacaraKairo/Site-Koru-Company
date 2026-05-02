@@ -6,43 +6,70 @@ import { SectionContact } from '@/components/sections/contato/SectionContact';
 import { FinalCTA } from '@/components/sections/final-cta/FinalCTA';
 import { HeroSection } from '@/components/sections/hero/HeroSection';
 import { ImpactSection } from '@/components/sections/impact/ImpactSection';
+import { ProblemsSection } from '@/components/sections/problems/ProblemsSection';
 import { ProcessSection } from '@/components/sections/process/ProcessSection';
+import { ProofSection } from '@/components/sections/proof/ProofSection';
 import { SolutionsSection } from '@/components/sections/solutions/SolutionsSection';
+import { TechnologiesSection } from '@/components/sections/technologies/TechnologiesSection';
+import { CONTACT } from '@/config/contact';
+
+const title =
+  'Koru Company | Sistemas, automações e soluções digitais sob medida';
+const description =
+  'Software house em Indaiatuba que desenvolve sistemas sob medida, automação de processos, dashboards, consultoria em tecnologia e sites profissionais para empresas.';
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Koru Company',
+  url: CONTACT.siteUrl,
+  email: CONTACT.email,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Indaiatuba',
+    addressRegion: 'SP',
+    addressCountry: 'BR',
+  },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: CONTACT.whatsappLabel,
+    contactType: 'customer service',
+    availableLanguage: 'Portuguese',
+  },
+};
 
 export default function Home() {
   return (
     <>
       <Head>
-        <title>
-          Koru Company | Sistemas, automações e soluções digitais sob medida
-        </title>
-        <meta
-          name="description"
-          content="A Koru Company desenvolve sistemas, automações, dashboards e plataformas digitais sob medida para empresas que querem operar com mais eficiência."
-        />
-        <meta name="theme-color" content="#050505" />
-        <meta
-          property="og:title"
-          content="Koru Company | Sistemas, automações e soluções digitais sob medida"
-        />
-        <meta
-          property="og:description"
-          content="Sistemas, automações, dashboards e plataformas digitais sob medida para empresas que querem operar com mais eficiência."
-        />
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta name="theme-color" content="#0d0f12" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
         <meta property="og:type" content="website" />
+        <meta property="og:url" content={CONTACT.siteUrl} />
         <meta
-          property="og:url"
-          content="https://site-koru-company.vercel.app"
+          property="og:image"
+          content={`${CONTACT.siteUrl}/imagens/logo.png`}
         />
-        <meta property="og:image" content="/imagens/logo.png" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
       </Head>
 
       <Header />
       <main>
         <HeroSection />
+        <ProblemsSection />
         <ImpactSection />
         <SolutionsSection />
+        <ProofSection />
         <ProcessSection />
+        <TechnologiesSection />
         <AboutSection />
         <SectionContact />
         <FinalCTA />

@@ -6,6 +6,7 @@ type CTAButtonProps = {
   children: React.ReactNode;
   variant?: 'primary' | 'secondary' | 'ghost';
   className?: string;
+  fullWidthOnMobile?: boolean;
   target?: string;
   rel?: string;
 };
@@ -15,10 +16,13 @@ export function CTAButton({
   children,
   variant = 'primary',
   className = '',
+  fullWidthOnMobile = false,
   target,
   rel,
 }: CTAButtonProps) {
-  const classes = `${styles.button} ${styles[variant]} ${className}`;
+  const classes = `${styles.button} ${styles[variant]} ${
+    fullWidthOnMobile ? styles.mobileFull : ''
+  } ${className}`;
   const isExternal = href.startsWith('http');
 
   if (isExternal) {

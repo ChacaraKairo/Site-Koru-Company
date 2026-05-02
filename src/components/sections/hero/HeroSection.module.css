@@ -6,9 +6,9 @@
   overflow: hidden;
   padding: 7.5rem 0 5rem;
   background:
-    radial-gradient(circle at 78% 22%, rgba(184, 242, 230, 0.16), transparent 30rem),
-    radial-gradient(circle at 22% 76%, rgba(125, 211, 252, 0.11), transparent 28rem),
-    linear-gradient(180deg, #050505 0%, #080808 100%);
+    radial-gradient(circle at 78% 22%, rgba(184, 242, 230, 0.22), transparent 30rem),
+    radial-gradient(circle at 22% 76%, rgba(125, 211, 252, 0.14), transparent 28rem),
+    linear-gradient(180deg, #15191f 0%, #0d0f12 100%);
 }
 
 .hero::before {
@@ -16,8 +16,8 @@
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
   background-size: 72px 72px;
   mask-image: radial-gradient(circle at 50% 42%, black, transparent 72%);
   opacity: 0.28;
@@ -56,9 +56,17 @@
 .subtitle {
   max-width: 720px;
   margin: 1.35rem 0 0;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.78);
   font-size: clamp(1.05rem, 2vw, 1.28rem);
   line-height: 1.7;
+}
+
+.microcopy {
+  max-width: 620px;
+  margin: 1rem 0 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.95rem;
+  line-height: 1.65;
 }
 
 .actions {
@@ -75,7 +83,7 @@
   margin: 2.4rem 0 0;
   padding: 0;
   list-style: none;
-  color: rgba(255, 255, 255, 0.58);
+  color: rgba(255, 255, 255, 0.66);
   font-size: 0.9rem;
 }
 
@@ -96,11 +104,11 @@
 .interfaceMockup {
   position: relative;
   min-height: 430px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 28px;
   background:
-    linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.03)),
-    rgba(17, 17, 17, 0.72);
+    linear-gradient(145deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.05)),
+    rgba(24, 28, 34, 0.86);
   backdrop-filter: blur(24px);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
   overflow: hidden;
@@ -139,29 +147,37 @@
   padding: 1.25rem;
 }
 
-.metric,
+.mockupList,
 .chart {
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 18px;
-  background: rgba(5, 5, 5, 0.42);
+  background: rgba(13, 15, 18, 0.66);
 }
 
-.metric {
+.mockupList {
+  display: grid;
+  gap: 0.8rem;
+  padding: 1rem;
+}
+
+.mockupList span {
   display: flex;
-  align-items: end;
+  align-items: center;
   justify-content: space-between;
-  padding: 1.2rem;
+  min-height: 52px;
+  padding: 0 1rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.045);
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.95rem;
 }
 
-.metric span {
-  color: rgba(255, 255, 255, 0.54);
-  font-size: 0.86rem;
-}
-
-.metric strong {
-  color: #ffffff;
-  font-size: 2rem;
-  line-height: 1;
+.mockupList span::after {
+  content: '';
+  width: 76px;
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(184, 242, 230, 0.7), transparent);
 }
 
 .chart {
@@ -184,6 +200,24 @@
 .chart i:nth-child(4) { height: 76%; }
 .chart i:nth-child(5) { height: 92%; }
 
+.scrollCue {
+  position: absolute;
+  left: 0;
+  bottom: -3.6rem;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.82rem;
+  text-decoration: none;
+}
+
+.scrollCue::after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 32px;
+  margin: 0.7rem auto 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.58), transparent);
+}
+
 @keyframes reveal {
   from {
     opacity: 0;
@@ -203,6 +237,10 @@
   .interfaceMockup {
     min-height: 320px;
   }
+
+  .scrollCue {
+    display: none;
+  }
 }
 
 @media (max-width: 520px) {
@@ -212,6 +250,10 @@
 
   .actions {
     flex-direction: column;
+  }
+
+  .interfaceMockup {
+    min-height: 260px;
   }
 }
 

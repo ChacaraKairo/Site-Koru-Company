@@ -31,10 +31,17 @@ export function AboutSection() {
             concreto.
           </p>
           <p>
-            Atuamos como parceiro técnico para empresas que enxergam
-            tecnologia como investimento estratégico, não apenas como
-            custo.
+            Na prática, isso significa entender processos, desenhar
+            fluxos, desenvolver sistemas e acompanhar a evolução da
+            solução após a entrega.
           </p>
+          <div className={styles.founder}>
+            <strong>Kairo Chácara, fundador da Koru Company</strong>
+            <span>
+              A Koru nasce com foco em criar tecnologia útil, clara e
+              aplicável à realidade de pequenas e médias empresas.
+            </span>
+          </div>
         </div>
         <div className={styles.pillars}>
           {pillars.map((pillar) => (

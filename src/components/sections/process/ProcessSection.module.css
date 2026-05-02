@@ -1,6 +1,6 @@
 .section {
   padding: 7rem 0;
-  background: #050505;
+  background: #0d0f12;
 }
 
 .timeline {
@@ -20,7 +20,7 @@
   left: 6%;
   right: 6%;
   height: 1px;
-  background: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .step {
@@ -36,9 +36,9 @@
   place-items: center;
   width: 4.3rem;
   height: 4.3rem;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 999px;
-  background: #0a0a0a;
+  background: #1a1f26;
   color: #ffffff;
   font-size: 0.8rem;
   font-weight: 650;
@@ -53,8 +53,25 @@
 
 .step p {
   margin: 0;
-  color: rgba(255, 255, 255, 0.62);
+  color: rgba(255, 255, 255, 0.72);
   font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.step strong {
+  display: block;
+  margin-top: 0.8rem;
+  color: rgba(184, 242, 230, 0.82);
+  font-size: 0.82rem;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+.note {
+  max-width: 720px;
+  margin: 3rem auto 0;
+  color: rgba(255, 255, 255, 0.68);
+  text-align: center;
   line-height: 1.7;
 }
 

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { CONTACT } from '@/config/contact';
 
 export interface FormData {
   name: string;
@@ -51,7 +52,7 @@ export function useContactForm() {
 
       if (!response.ok) {
         const err = await response.json();
-        throw new Error(err.error || 'Erro ao enviar formulario');
+        throw new Error(err.error || 'Erro ao enviar formulário');
       }
 
       const whatsappMessage = encodeURIComponent(
@@ -71,18 +72,18 @@ export function useContactForm() {
       });
       setStatus('success');
       setFeedback(
-        'Mensagem enviada. Se preferir, a conversa também pode continuar pelo WhatsApp.',
+        'Mensagem enviada. Também abrimos o WhatsApp com a conversa pronta para agilizar seu atendimento.',
       );
       window.open(
-        `https://wa.me/5519986011419?text=${whatsappMessage}`,
+        `https://wa.me/${CONTACT.whatsappNumber}?text=${whatsappMessage}`,
         '_blank',
         'noopener,noreferrer',
       );
     } catch (error) {
-      console.error('Erro ao enviar formulario:', error);
+      console.error('Erro ao enviar formulário:', error);
       setStatus('error');
       setFeedback(
-        'Não foi possível enviar agora. Tente novamente em instantes.',
+        'Não foi possível enviar agora. Verifique seus dados e tente novamente.',
       );
     }
   }

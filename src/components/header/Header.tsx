@@ -2,13 +2,16 @@
 
 import { useEffect, useState } from 'react';
 import { CTAButton } from '@/components/ui/CTAButton';
+import {
+  createWhatsAppLink,
+  diagnosticMessage,
+} from '@/config/contact';
 import { Logo } from './Logo';
 import { MenuDesktop } from './MenuDesktop';
 import { MenuMobile } from './MenuMobile';
 import headerStyles from './styles/Header.module.css';
 
-const whatsappLink =
-  'https://wa.me/5519986011419?text=Ol%C3%A1%21%20Tenho%20interesse%20em%20agendar%20um%20diagn%C3%B3stico%20com%20a%20Koru%20Company.';
+const whatsappLink = createWhatsAppLink(diagnosticMessage);
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -32,7 +35,11 @@ export function Header() {
         <Logo />
         <MenuDesktop />
         <div className={headerStyles.actions}>
-          <CTAButton href={whatsappLink} className={headerStyles.cta}>
+          <CTAButton
+            href={whatsappLink}
+            variant={scrolled ? 'primary' : 'secondary'}
+            className={headerStyles.cta}
+          >
             Falar com a Koru
           </CTAButton>
           <MenuMobile />

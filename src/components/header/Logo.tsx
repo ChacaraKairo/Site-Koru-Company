@@ -8,10 +8,10 @@ export function Logo() {
       <Image
         src="/imagens/logo.png"
         alt="Koru Company"
-        width={140}
-        height={56}
+        width={156}
+        height={62}
         priority
-        sizes="140px"
+        sizes="156px"
       />
     </Link>
   );

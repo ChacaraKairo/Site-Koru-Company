@@ -1,68 +1,54 @@
-// Arquivo: pages/api/contact.ts
-
-// import { PrismaClient } from '@/generated/prisma'; // REMOVIDO
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-// const prisma = new PrismaClient(); // REMOVIDO
-
-// Interface para garantir a tipagem dos dados do formulário
-// Baseado em: src/components/sections/contato/scripts/useContactForm.ts
 interface ContactFormData {
   name: string;
   company?: string;
   phone: string;
   email: string;
   message?: string;
-  endereco?: string;
 }
 
-/**
- * Envia uma notificação para o bot do Telegram.
- * Esta função é chamada internamente e não quebra a API principal se falhar.
- */
-async function sendTelegramNotification(
-  data: ContactFormData,
-) {
-  const { name, company, phone, email, message, endereco } =
-    data;
+function isValidEmail(email: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
 
-  // Lê as variáveis de ambiente que você configurou no .env.local
+function isValidPhone(phone: string) {
+  const digits = phone.replace(/\D/g, '');
+  return digits.length >= 10 && digits.length <= 14;
+}
+
+async function sendTelegramNotification(data: ContactFormData) {
+  const { name, company, phone, email, message } = data;
   const botToken = process.env.TELEGRAM_BOT_TOKEN;
   const chatId = process.env.TELEGRAM_CHAT_ID;
 
   if (!botToken || !chatId) {
     console.error(
-      'Variáveis de ambiente do Telegram (TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID) não estão configuradas.',
+      'Variáveis de ambiente do Telegram não estão configuradas.',
     );
-    // Não retorna um erro para o usuário, apenas loga no servidor.
     return;
   }
 
-  // Monta a mensagem formatada para o Telegram (usando Markdown)
   const text = `
-*Nova Mensagem do Site Koru!*
+*Nova mensagem do site Koru*
 
 *Nome:* ${name}
 *Empresa:* ${company || 'Não informado'}
 *Telefone:* ${phone}
-*Email:* ${email}
-*Endereço (localização):* ${endereco || 'Não informado'}
+*E-mail:* ${email}
 
-*Observações:*
-${message || 'Nenhuma observação.'}
+*Mensagem:*
+${message || 'Nenhuma mensagem informada.'}
   `;
 
-  // Limpa a formatação (remove espaços extras da template string)
   const formattedText = text
     .split('\n')
     .map((line) => line.trim())
     .join('\n');
 
-  const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
-
-  try {
-    // Usa o fetch nativo para enviar a notificação
-    const response = await fetch(url, {
+  const response = await fetch(
+    `https://api.telegram.org/bot${botToken}/sendMessage`,
+    {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -72,72 +58,53 @@ ${message || 'Nenhuma observação.'}
         text: formattedText,
         parse_mode: 'Markdown',
       }),
-    });
+    },
+  );
 
-    if (!response.ok) {
-      const errorData = await response.json();
-      console.error(
-        'Erro ao enviar notificação para o Telegram:',
-        errorData,
-      );
-    } else {
-      console.log(
-        'Notificação do Telegram enviada com sucesso!',
-      );
-    }
-  } catch (error) {
-    console.error(
-      'Erro de rede ao contatar a API do Telegram:',
-      error,
-    );
+  if (!response.ok) {
+    const errorData = await response.json();
+    console.error('Erro ao enviar notificação para o Telegram:', errorData);
   }
 }
 
-/**
- * Handler principal da API
- */
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
   if (req.method !== 'POST') {
-    return res
-      .status(405)
-      .json({ error: 'Method not allowed' });
+    return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  // Tipamos o body da requisição
-  const { name, email } = req.body as ContactFormData;
+  const { name, phone, email } = req.body as ContactFormData;
 
-  // Validação básica (message agora é opcional)
-  if (!name || !email) {
+  if (!name?.trim() || !phone?.trim() || !email?.trim()) {
     return res.status(400).json({
-      error: 'Nome e email são obrigatórios',
+      error: 'Nome, telefone e e-mail são obrigatórios.',
+    });
+  }
+
+  if (!isValidEmail(email)) {
+    return res.status(400).json({
+      error: 'Informe um e-mail válido.',
+    });
+  }
+
+  if (!isValidPhone(phone)) {
+    return res.status(400).json({
+      error: 'Informe um telefone válido.',
     });
   }
 
   try {
-    // 1. Envia a notificação para o Telegram
-    // A função sendTelegramNotification já lida com seus próprios erros.
-    await sendTelegramNotification(
-      req.body as ContactFormData,
-    );
+    await sendTelegramNotification(req.body as ContactFormData);
 
-    // 2. Retorna sucesso para o frontend
-    // Alterado de 201 (Created) para 200 (OK) pois nada está sendo criado no banco.
     return res
       .status(200)
-      .json({ message: 'Mensagem enviada com sucesso!' });
+      .json({ message: 'Mensagem enviada com sucesso.' });
   } catch (error) {
-    // Este catch agora é para erros inesperados no handler
-    console.error(
-      'Erro inesperado no handler da API:',
-      error,
-    );
-    return res
-      .status(500)
-      .json({
-        error: 'Erro interno ao processar a solicitação',
-      });
+    console.error('Erro inesperado no handler da API:', error);
+    return res.status(500).json({
+      error: 'Erro interno ao processar a solicitação.',
+    });
   }
 }

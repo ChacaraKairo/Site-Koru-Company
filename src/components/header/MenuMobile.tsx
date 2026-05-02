@@ -1,31 +1,76 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { CTAButton } from '@/components/ui/CTAButton';
+import {
+  createWhatsAppLink,
+  diagnosticMessage,
+} from '@/config/contact';
 import { MenuList } from './MenuList';
 import mobileMenuStyles from './styles/MenuMobile.module.css';
 
-const whatsappLink =
-  'https://wa.me/5519986011419?text=Ol%C3%A1%21%20Tenho%20interesse%20em%20agendar%20um%20diagn%C3%B3stico%20com%20a%20Koru%20Company.';
+const whatsappLink = createWhatsAppLink(diagnosticMessage);
 
 export function MenuMobile() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const drawerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
 
+    if (!menuOpen) {
+      return () => {
+        document.body.style.overflow = '';
+      };
+    }
+
+    const focusableElements = drawerRef.current?.querySelectorAll<
+      HTMLAnchorElement | HTMLButtonElement
+    >('a[href], button:not([disabled])');
+    const firstElement = focusableElements?.[0];
+    const lastElement = focusableElements?.[focusableElements.length - 1];
+
+    firstElement?.focus();
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        closeMenu();
+      }
+
+      if (
+        event.key === 'Tab' &&
+        focusableElements?.length &&
+        firstElement &&
+        lastElement
+      ) {
+        if (event.shiftKey && document.activeElement === firstElement) {
+          event.preventDefault();
+          lastElement.focus();
+        } else if (!event.shiftKey && document.activeElement === lastElement) {
+          event.preventDefault();
+          firstElement.focus();
+        }
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown);
+
     return () => {
       document.body.style.overflow = '';
+      document.removeEventListener('keydown', handleKeyDown);
     };
   }, [menuOpen]);
 
   function closeMenu() {
     setMenuOpen(false);
+    buttonRef.current?.focus();
   }
 
   return (
     <>
       <button
+        ref={buttonRef}
         className={mobileMenuStyles.mobileMenuButton}
         onClick={() => setMenuOpen((open) => !open)}
         aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
@@ -45,11 +90,14 @@ export function MenuMobile() {
       </button>
 
       <div
+        ref={drawerRef}
         id="mobile-navigation"
         className={`${mobileMenuStyles.drawer} ${
           menuOpen ? mobileMenuStyles.drawerOpen : ''
         }`}
         aria-hidden={!menuOpen}
+        aria-modal="true"
+        role="dialog"
       >
         <div className={mobileMenuStyles.drawerContent}>
           <MenuList

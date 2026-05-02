@@ -1,19 +1,49 @@
-import React from 'react';
+import { CTAButton } from '@/components/ui/CTAButton';
+import {
+  CONTACT,
+  createWhatsAppLink,
+  diagnosticMessage,
+} from '@/config/contact';
 import styles from './styles/ContactMap.module.css';
+
+const whatsappLink = createWhatsAppLink(diagnosticMessage);
 
 export function ContactMap() {
   return (
-    <div className={styles.mapContainer}>
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d259264.3901634863!2d-47.2772077!3d-23.1117627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8b4a92532f027%3A0x261346b50e81af6c!2sIndaiatuba%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1722964866501!5m2!1spt-BR!2sbr"
-        width="100%"
-        height="300"
-        style={{ border: 0 }}
-        allowFullScreen
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-        title="Indaiatuba - SP"
-      />
-    </div>
+    <aside className={styles.contactPanel} aria-label="Canais de contato">
+      <p className={styles.eyebrow}>Próximo passo</p>
+      <h3>Diagnóstico inicial sem compromisso.</h3>
+      <p className={styles.description}>
+        Após o envio, entraremos em contato para entender seu cenário e
+        indicar o melhor caminho para sistemas, automações ou dados.
+      </p>
+      <dl className={styles.info}>
+        <div>
+          <dt>WhatsApp</dt>
+          <dd>
+            <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+              {CONTACT.whatsappLabel}
+            </a>
+          </dd>
+        </div>
+        <div>
+          <dt>E-mail</dt>
+          <dd>
+            <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
+          </dd>
+        </div>
+        <div>
+          <dt>Localização</dt>
+          <dd>{CONTACT.city}</dd>
+        </div>
+        <div>
+          <dt>Atendimento</dt>
+          <dd>Nacional, com diagnóstico remoto.</dd>
+        </div>
+      </dl>
+      <CTAButton href={whatsappLink} variant="secondary" fullWidthOnMobile>
+        Continuar pelo WhatsApp
+      </CTAButton>
+    </aside>
   );
 }
