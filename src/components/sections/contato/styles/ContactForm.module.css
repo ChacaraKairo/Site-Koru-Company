@@ -60,6 +60,13 @@
   line-height: 1.4;
 }
 
+.privacyNotice {
+  margin: 0.2rem 0 0;
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
 .contactForm input[aria-invalid='true'] {
   border-color: rgba(252, 165, 165, 0.72);
 }

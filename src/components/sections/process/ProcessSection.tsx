@@ -2,6 +2,12 @@ import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import styles from './ProcessSection.module.css';
 
+const startSteps = [
+  'Você explica o cenário.',
+  'A Koru identifica oportunidades.',
+  'Você recebe uma sugestão de caminho.',
+];
+
 const steps = [
   {
     title: 'Diagnóstico',
@@ -30,16 +36,47 @@ const steps = [
   },
 ];
 
+const workModels = [
+  {
+    title: 'Diagnóstico técnico',
+    text: 'Para entender cenário, mapear oportunidades e definir o próximo passo.',
+  },
+  {
+    title: 'Projeto fechado',
+    text: 'Para sistemas, sites, dashboards ou automações com escopo claro.',
+  },
+  {
+    title: 'Evolução contínua',
+    text: 'Para manutenção, melhorias e acompanhamento recorrente.',
+  },
+];
+
 export function ProcessSection() {
   return (
     <section id="process" className={styles.section}>
       <Container>
         <SectionHeading
           eyebrow="Processo"
-          title="Do diagnóstico à evolução contínua."
-          subtitle="Um processo claro para transformar necessidades de negócio em soluções digitais confiáveis."
+          title="Do diagnóstico à solução."
+          subtitle="Um caminho claro para começar pequeno, reduzir risco e transformar necessidades de negócio em soluções digitais confiáveis."
           align="center"
         />
+
+        <div className={styles.startGrid}>
+          <div className={styles.startCopy}>
+            <p>Como começamos</p>
+            <h3>Antes de desenvolver, entendemos o cenário.</h3>
+          </div>
+          <ol className={styles.startSteps}>
+            {startSteps.map((step, index) => (
+              <li key={step}>
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                {step}
+              </li>
+            ))}
+          </ol>
+        </div>
+
         <ol className={styles.timeline}>
           {steps.map((step, index) => (
             <li className={styles.step} key={step.title}>
@@ -50,11 +87,25 @@ export function ProcessSection() {
             </li>
           ))}
         </ol>
+
+        <div className={styles.models}>
+          <div className={styles.modelsHeader}>
+            <p>Formas de trabalho</p>
+            <h3>Escolha o formato certo para o momento da empresa.</h3>
+          </div>
+          <div className={styles.modelsGrid}>
+            {workModels.map((model) => (
+              <article key={model.title}>
+                <h4>{model.title}</h4>
+                <p>{model.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+
         <p className={styles.note}>
           Nem todo projeto precisa começar grande. Podemos iniciar com
-          um diagnóstico, um MVP ou uma automação pontual. Projetos
-          maiores são divididos em etapas para reduzir risco e dar
-          visibilidade.
+          um diagnóstico, um MVP ou uma automação pontual.
         </p>
       </Container>
     </section>

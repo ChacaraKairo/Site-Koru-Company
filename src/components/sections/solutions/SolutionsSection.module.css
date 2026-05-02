@@ -19,13 +19,12 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1rem;
   margin-top: 3rem;
 }
 
 .card {
-  grid-column: span 2;
   min-height: 310px;
   display: flex;
   flex-direction: column;
@@ -36,17 +35,19 @@
   background: rgba(28, 33, 40, 0.92);
 }
 
-.card:nth-child(4),
-.card:nth-child(5) {
-  grid-column: span 3;
-}
-
 .cardTop {
   display: flex;
   width: 100%;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+}
+
+.groupLabel {
+  margin: 3rem 0 1rem;
+  color: rgba(184, 242, 230, 0.82);
+  font-size: 0.8rem;
+  font-weight: 700;
 }
 
 .cardTop span {
@@ -91,6 +92,48 @@
   font-size: 0.72rem;
 }
 
+.presenceBlock {
+  display: grid;
+  grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  background: rgba(13, 15, 18, 0.42);
+}
+
+.presenceBlock h3 {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(1.5rem, 3vw, 2.3rem);
+  line-height: 1.05;
+}
+
+.presenceGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.presenceGrid article {
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.presenceGrid h4 {
+  margin: 0 0 0.55rem;
+  color: #ffffff;
+}
+
+.presenceGrid p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.68);
+  line-height: 1.55;
+}
+
 @media (max-width: 980px) {
   .header {
     grid-template-columns: 1fr;
@@ -100,10 +143,10 @@
     width: fit-content;
   }
 
-  .card,
-  .card:nth-child(4),
-  .card:nth-child(5) {
-    grid-column: span 3;
+  .grid,
+  .presenceBlock,
+  .presenceGrid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -114,12 +157,6 @@
 
   .grid {
     grid-template-columns: 1fr;
-  }
-
-  .card,
-  .card:nth-child(4),
-  .card:nth-child(5) {
-    grid-column: span 1;
   }
 
   .headerCta {

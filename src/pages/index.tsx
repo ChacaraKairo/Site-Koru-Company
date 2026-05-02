@@ -11,9 +11,9 @@ import { ProblemsSection } from '@/components/sections/problems/ProblemsSection'
 import { ProcessSection } from '@/components/sections/process/ProcessSection';
 import { ProofSection } from '@/components/sections/proof/ProofSection';
 import { SolutionsSection } from '@/components/sections/solutions/SolutionsSection';
-import { StartSection } from '@/components/sections/start/StartSection';
 import { TechnologiesSection } from '@/components/sections/technologies/TechnologiesSection';
 import { CONTACT } from '@/config/contact';
+import { faqItems } from '@/content/faq';
 
 const title =
   'Koru Company | Sistemas, automações e soluções digitais sob medida';
@@ -40,6 +40,19 @@ const organizationSchema = {
   },
 };
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
+
 export default function Home() {
   return (
     <>
@@ -53,12 +66,18 @@ export default function Home() {
         <meta property="og:url" content={CONTACT.siteUrl} />
         <meta
           property="og:image"
-          content={`${CONTACT.siteUrl}/imagens/logo.png`}
+          content={`${CONTACT.siteUrl}/og-image.png`}
         />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(organizationSchema),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqSchema),
           }}
         />
       </Head>
@@ -71,7 +90,6 @@ export default function Home() {
         <ImpactSection />
         <ProofSection />
         <ProcessSection />
-        <StartSection />
         <TechnologiesSection />
         <AboutSection />
         <FAQSection />

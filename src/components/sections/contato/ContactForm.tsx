@@ -1,7 +1,11 @@
+import { useEffect, useRef } from 'react';
 import styles from './styles/ContactForm.module.css';
 import { useContactForm } from './scripts/useContactForm';
 
 export function ContactForm() {
+  const nameRef = useRef<HTMLInputElement>(null);
+  const phoneRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
   const {
     formData,
     handleChange,
@@ -13,6 +17,16 @@ export function ContactForm() {
 
   const isSubmitting = status === 'submitting';
 
+  useEffect(() => {
+    if (fieldErrors.name) {
+      nameRef.current?.focus();
+    } else if (fieldErrors.phone) {
+      phoneRef.current?.focus();
+    } else if (fieldErrors.email) {
+      emailRef.current?.focus();
+    }
+  }, [fieldErrors]);
+
   return (
     <form className={styles.contactForm} onSubmit={handleSubmit} noValidate>
       <p className={styles.notice}>
@@ -21,6 +35,7 @@ export function ContactForm() {
       </p>
       <label htmlFor="name">Nome *</label>
       <input
+        ref={nameRef}
         type="text"
         id="name"
         name="name"
@@ -49,6 +64,7 @@ export function ContactForm() {
 
       <label htmlFor="phone">Telefone *</label>
       <input
+        ref={phoneRef}
         type="tel"
         id="phone"
         name="phone"
@@ -67,6 +83,7 @@ export function ContactForm() {
 
       <label htmlFor="email">E-mail *</label>
       <input
+        ref={emailRef}
         type="email"
         id="email"
         name="email"
@@ -104,6 +121,11 @@ export function ContactForm() {
           {feedback}
         </p>
       )}
+
+      <p className={styles.privacyNotice}>
+        Ao enviar, você concorda que a Koru utilize seus dados apenas
+        para responder ao contato solicitado.
+      </p>
 
       <button
         type="submit"

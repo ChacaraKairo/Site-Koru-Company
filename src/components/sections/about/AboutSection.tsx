@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { Container } from '@/components/ui/Container';
 import styles from './AboutSection.module.css';
 
@@ -7,12 +8,16 @@ const pillars = [
     text: 'Antes de desenvolver, entendemos o problema e desenhamos o caminho certo.',
   },
   {
-    title: 'Tecnologia sob medida',
-    text: 'Cada solução é pensada para o processo, o time e o momento da empresa.',
+    title: 'Soluções por etapa',
+    text: 'Projetos podem começar pequenos e evoluir conforme prioridade, uso e resultado.',
   },
   {
-    title: 'Parceria de longo prazo',
-    text: 'Construímos, acompanhamos e evoluímos junto com o cliente.',
+    title: 'Comunicação objetiva',
+    text: 'Você acompanha decisões, entregáveis e próximos passos sem linguagem desnecessária.',
+  },
+  {
+    title: 'Evolução contínua',
+    text: 'Construímos, acompanhamos e melhoramos a solução depois da entrega.',
   },
 ];
 
@@ -35,12 +40,25 @@ export function AboutSection() {
             fluxos, desenvolver sistemas e acompanhar a evolução da
             solução após a entrega.
           </p>
+        </div>
+        <div className={styles.profile}>
+          <div className={styles.photo}>
+            <Image
+              src="/imagens/ceo2.png"
+              alt="Kairo Chácara, fundador da Koru Company"
+              width={520}
+              height={620}
+              sizes="(max-width: 900px) 100vw, 420px"
+            />
+          </div>
           <div className={styles.founder}>
-            <strong>Kairo Chácara, fundador da Koru Company</strong>
-            <span>
-              A Koru nasce com foco em criar tecnologia útil, clara e
-              aplicável à realidade de pequenas e médias empresas.
-            </span>
+            <strong>Kairo Chácara</strong>
+            <span>Fundador da Koru Company</span>
+            <p>
+              A Koru nasce para ajudar pequenas e médias empresas a
+              transformar processos manuais em soluções digitais claras,
+              úteis e sustentáveis.
+            </p>
           </div>
         </div>
         <div className={styles.pillars}>
