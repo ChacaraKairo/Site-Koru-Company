@@ -1,29 +1,53 @@
-/* styles/MenuDesktop.module.css */
-
 .desktopMenu {
   display: flex;
 }
 
 .navList {
-  list-style: none;
   display: flex;
-  gap: 2rem;
+  align-items: center;
+  gap: 1.45rem;
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 
-.navList li a {
-  text-decoration: none;
-  color: #1f1f1f;
+.navList a {
+  position: relative;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.9rem;
   font-weight: 500;
-  font-size: 1.2rem;
-  transition: color 0.3s;
+  text-decoration: none;
+  transition: color 180ms ease;
 }
 
-.navList li a:hover {
-  color: #1a237e;
+.navList a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.45rem;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.74);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 180ms ease;
 }
-@media screen and (max-width: 999px) {
+
+.navList a:hover,
+.navList a:focus-visible {
+  color: #ffffff;
+}
+
+.navList a:hover::after,
+.navList a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.navList a:focus-visible {
+  outline: none;
+}
+
+@media (max-width: 860px) {
   .desktopMenu {
     display: none;
   }

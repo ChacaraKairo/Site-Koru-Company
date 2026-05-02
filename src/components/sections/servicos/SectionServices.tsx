@@ -1,7 +1,5 @@
-import React from 'react';
 import styles from './styles/Service.module.css';
 import { ServicesList } from './ServiceList';
-import { useRevealOnScroll } from '../animation';
 
 export function SectionServices() {
   return (

@@ -1,8 +1,21 @@
 .mapContainer {
-  flex: 1 1 350px;
-  border-radius: 12px;
+  min-height: 100%;
   overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  min-width: 320px;
-  height: 250px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  background: rgba(17, 17, 17, 0.76);
+}
+
+.mapContainer iframe {
+  display: block;
+  width: 100%;
+  min-height: 100%;
+  filter: grayscale(1) invert(0.92) contrast(0.86);
+  opacity: 0.72;
+}
+
+@media (max-width: 900px) {
+  .mapContainer iframe {
+    min-height: 280px;
+  }
 }

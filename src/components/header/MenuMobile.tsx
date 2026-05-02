@@ -1,65 +1,64 @@
 'use client';
 
-import { useState } from 'react';
-import mobileMenuStyles from './styles/MenuMobile.module.css';
+import { useEffect, useState } from 'react';
+import { CTAButton } from '@/components/ui/CTAButton';
 import { MenuList } from './MenuList';
+import mobileMenuStyles from './styles/MenuMobile.module.css';
 
-interface MenuMobileProps {
-  onLinkClick?: () => void;
-}
+const whatsappLink =
+  'https://wa.me/5519986011419?text=Ol%C3%A1%21%20Tenho%20interesse%20em%20agendar%20um%20diagn%C3%B3stico%20com%20a%20Koru%20Company.';
 
-export function MenuMobile({
-  onLinkClick,
-}: MenuMobileProps) {
+export function MenuMobile() {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  function toggleMenu() {
-    setMenuOpen(!menuOpen);
-  }
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
 
-  function handleLinkClick() {
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [menuOpen]);
+
+  function closeMenu() {
     setMenuOpen(false);
-    if (onLinkClick) onLinkClick();
   }
 
   return (
     <>
       <button
         className={mobileMenuStyles.mobileMenuButton}
-        onClick={toggleMenu}
+        onClick={() => setMenuOpen((open) => !open)}
         aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
+        aria-expanded={menuOpen}
+        aria-controls="mobile-navigation"
       >
-        <div
+        <span
           className={`${mobileMenuStyles.line} ${
             menuOpen ? mobileMenuStyles.line1Active : ''
           }`}
         />
-        <div
+        <span
           className={`${mobileMenuStyles.line} ${
             menuOpen ? mobileMenuStyles.line2Active : ''
-          }`}
-        />
-        <div
-          className={`${mobileMenuStyles.line} ${
-            menuOpen ? mobileMenuStyles.line3Active : ''
           }`}
         />
       </button>
 
       <div
+        id="mobile-navigation"
         className={`${mobileMenuStyles.drawer} ${
           menuOpen ? mobileMenuStyles.drawerOpen : ''
         }`}
-        onClick={() => setMenuOpen(false)}
+        aria-hidden={!menuOpen}
       >
-        <div
-          className={mobileMenuStyles.drawerContent}
-          onClick={(e) => e.stopPropagation()}
-        >
+        <div className={mobileMenuStyles.drawerContent}>
           <MenuList
-            onLinkClick={handleLinkClick}
+            onLinkClick={closeMenu}
             className={mobileMenuStyles.drawerNavList}
           />
+          <CTAButton href={whatsappLink} className={mobileMenuStyles.drawerCta}>
+            Falar com a Koru
+          </CTAButton>
         </div>
       </div>
     </>

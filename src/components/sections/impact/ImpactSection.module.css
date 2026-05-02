@@ -1,0 +1,67 @@
+.section {
+  padding: 7rem 0;
+  background: #050505;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+.card {
+  min-height: 250px;
+  padding: 1.45rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.018)),
+    #0a0a0a;
+  transition:
+    border-color 220ms ease,
+    background 220ms ease,
+    transform 220ms ease;
+}
+
+.card:hover {
+  border-color: rgba(184, 242, 230, 0.36);
+  background:
+    linear-gradient(180deg, rgba(184, 242, 230, 0.08), rgba(255, 255, 255, 0.018)),
+    #0a0a0a;
+  transform: translateY(-3px);
+}
+
+.card span {
+  display: block;
+  color: rgba(255, 255, 255, 0.38);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.card h3 {
+  margin: 3.7rem 0 0.8rem;
+  color: #ffffff;
+  font-size: 1.35rem;
+  font-weight: 620;
+}
+
+.card p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.64);
+  line-height: 1.7;
+}
+
+@media (max-width: 860px) {
+  .section {
+    padding: 5rem 0;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    min-height: 210px;
+  }
+}

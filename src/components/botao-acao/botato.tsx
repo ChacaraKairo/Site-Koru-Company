@@ -1,26 +1,12 @@
-import React from 'react';
+import { CTAButton } from '@/components/ui/CTAButton';
 
-const BotaoWhatsapp = () => {
-  const numero = '5519986011419'; // Substitua pelo seu número com DDI
-  const mensagem = encodeURIComponent(
-    'Olá! Tenho interesse em contratar os serviços da Koru.',
-  );
-  const link = `https://wa.me/${numero}?text=${mensagem}`;
+const whatsappLink =
+  'https://wa.me/5519986011419?text=Ol%C3%A1%21%20Tenho%20interesse%20em%20agendar%20um%20diagn%C3%B3stico%20com%20a%20Koru%20Company.';
 
+export default function BotaoWhatsapp() {
   return (
-    <div className="w-full flex justify-center my-2">
-      {/* Margem vertical ainda menor */}
-      <a
-        href={link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="bg-green-500 hover:bg-green-600 text-white font-extrabold py-4 px-8 rounded-full shadow-2xl text-lg sm:text-xl transition-transform duration-300 transform hover:scale-105 animate-pulse flex items-center gap-3"
-      >
-        <span className="text-3xl">📲</span>
-        <span>CLIQUE AQUI E CONTRATE NOSSOS SERVIÇOS!</span>
-      </a>
+    <div className="flex w-full justify-center">
+      <CTAButton href={whatsappLink}>Agendar diagnóstico</CTAButton>
     </div>
   );
-};
-
-export default BotaoWhatsapp;
+}

@@ -1,5 +1,3 @@
-// Arquivo: src/components/sections/contato/ContactForm.tsx
-import React, { useEffect } from 'react'; // useEffect não é mais usado aqui, mas deixei o import
 import styles from './styles/ContactForm.module.css';
 import { useContactForm } from './scripts/useContactForm';
 
@@ -8,25 +6,21 @@ export function ContactForm() {
     formData,
     handleChange,
     handleSubmit,
-    // setFormData, // Não precisamos mais do setFormData aqui
+    status,
+    feedback,
   } = useContactForm();
 
-  //
-  // O useEffect() QUE ESTAVA AQUI FOI REMOVIDO!
-  // A lógica agora está dentro do 'handleSubmit' no hook.
-  //
+  const isSubmitting = status === 'submitting';
 
   return (
-    <form
-      className={styles.contactForm}
-      onSubmit={handleSubmit}
-    >
+    <form className={styles.contactForm} onSubmit={handleSubmit}>
       <label htmlFor="name">Nome *</label>
       <input
         type="text"
         id="name"
         name="name"
         required
+        autoComplete="name"
         value={formData.name}
         onChange={handleChange}
       />
@@ -36,6 +30,7 @@ export function ContactForm() {
         type="text"
         id="company"
         name="company"
+        autoComplete="organization"
         value={formData.company}
         onChange={handleChange}
       />
@@ -46,39 +41,49 @@ export function ContactForm() {
         id="phone"
         name="phone"
         required
+        autoComplete="tel"
         value={formData.phone}
         onChange={handleChange}
       />
 
-      <label htmlFor="email">Email *</label>
+      <label htmlFor="email">E-mail *</label>
       <input
         type="email"
         id="email"
         name="email"
         required
+        autoComplete="email"
         value={formData.email}
         onChange={handleChange}
       />
 
-      <label htmlFor="message">Observações</label>
+      <label htmlFor="message">Mensagem</label>
       <textarea
         id="message"
         name="message"
         rows={5}
-        value={formData.message || ''} // Garante que é uma string
+        value={formData.message || ''}
         onChange={handleChange}
       />
 
-      {/* O campo oculto não é mais necessário, pois o 'handleSubmit' cuida disso,
-          mas pode deixar se quiser. Ele apenas não terá valor. */}
-      <input
-        type="hidden"
-        name="endereco"
-        value={formData.endereco || ''}
-      />
+      {feedback && (
+        <p
+          className={`${styles.feedback} ${
+            status === 'error' ? styles.error : styles.success
+          }`}
+          role="status"
+          aria-live="polite"
+        >
+          {feedback}
+        </p>
+      )}
 
-      <button type="submit" className={styles.submitBtn}>
-        Enviar
+      <button
+        type="submit"
+        className={styles.submitBtn}
+        disabled={isSubmitting}
+      >
+        {isSubmitting ? 'Enviando...' : 'Enviar mensagem'}
       </button>
     </form>
   );

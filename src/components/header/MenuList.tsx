@@ -1,7 +1,3 @@
-'use client';
-
-import React from 'react';
-
 type MenuItem = {
   href: string;
   label: string;
@@ -9,8 +5,9 @@ type MenuItem = {
 
 const menuItems: MenuItem[] = [
   { href: '#hero', label: 'Início' },
-  { href: '#about', label: 'Quem Somos' },
-  { href: '#services', label: 'Serviços' },
+  { href: '#solutions', label: 'Soluções' },
+  { href: '#process', label: 'Processo' },
+  { href: '#about', label: 'Sobre' },
   { href: '#contact', label: 'Contato' },
 ];
 
@@ -19,47 +16,12 @@ interface MenuListProps {
   className?: string;
 }
 
-export function MenuList({
-  onLinkClick,
-  className,
-}: MenuListProps) {
-  const headerOffset = 150; // ajuste para a altura do seu header fixo em px
-
-  const handleClick = (
-    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-    href: string,
-  ) => {
-    e.preventDefault();
-
-    const id = href.replace('#', '');
-    const element = document.getElementById(id);
-
-    if (element) {
-      const elementPosition =
-        element.getBoundingClientRect().top;
-      const offsetPosition =
-        window.pageYOffset + elementPosition - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth',
-      });
-    }
-
-    if (onLinkClick) {
-      onLinkClick();
-    }
-  };
-
+export function MenuList({ onLinkClick, className }: MenuListProps) {
   return (
     <ul className={className}>
       {menuItems.map(({ href, label }) => (
         <li key={href}>
-          <a
-            href={href}
-            onClick={(e) => handleClick(e, href)}
-            className="hover:text-blue-600 transition"
-          >
+          <a href={href} onClick={onLinkClick}>
             {label}
           </a>
         </li>

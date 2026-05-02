@@ -1,75 +1,83 @@
 @import 'tailwindcss';
 
-/* 🌐 Variáveis globais */
 :root {
-  --background: #efefef;
-  --foreground: #171717;
+  --color-bg: #050505;
+  --color-bg-soft: #0a0a0a;
+  --color-surface: #111111;
+  --color-surface-2: #171717;
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-text: #ffffff;
+  --color-text-muted: rgba(255, 255, 255, 0.68);
+  --color-text-soft: rgba(255, 255, 255, 0.48);
+  --color-brand: #b8f2e6;
 }
 
-/* 🌙 Tema escuro automático */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #efefef; /* Talvez queira escurecer para tema escuro? */
-    --foreground: #ededed;
-  }
-}
-
-/* 📄 Estilos globais */
-body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-geist-sans, Arial, sans-serif);
-  margin: 0;
-  padding: 0;
-  line-height: 1.6;
+* {
+  box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
+  background: var(--color-bg);
 }
 
-/* Limita largura mínima da página e permite scroll horizontal se necessário */
 html,
 body {
-  min-width: 100px;
-  overflow-x: auto;
+  min-width: 320px;
+  overflow-x: hidden;
 }
 
-/* 🔝 Header fixo */
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 50;
-  background-color: var(--background);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(184, 242, 230, 0.06), transparent 28rem),
+    var(--color-bg);
+  color: var(--color-text);
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* 👇 Espaçamento abaixo do header fixo e layout em coluna */
+body,
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
 main {
-  padding-top: 120px;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  overflow-x: hidden; /* Evita scroll horizontal aqui, para evitar conflito com html/body */
+  overflow-x: hidden;
 }
 
-/* Garantir largura total e padding lateral das sections dentro do main */
-main > section {
-  width: 100%;
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  box-sizing: border-box;
-  padding-left: 1rem;
-  padding-right: 1rem;
+section {
+  scroll-margin-top: 96px;
 }
 
-/* Aumenta padding lateral em telas muito pequenas */
-@media (max-width: 400px) {
-  main > section {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+::selection {
+  background: rgba(184, 242, 230, 0.25);
+  color: #ffffff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }

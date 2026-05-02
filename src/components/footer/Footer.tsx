@@ -1,29 +1,53 @@
-import React, { useState } from 'react';
-import styles from './styles/Footer.module.css';
-import { ContactInfo } from './ContactInfo';
+import Link from 'next/link';
 import { SocialLinks } from './SocialLinks';
-import { AlertMessage } from './AlertMessage';
-import { copyPhoneNumber } from './scripts/copyPhoneNumber';
+import styles from './styles/Footer.module.css';
+
+const links = [
+  { href: '#hero', label: 'Início' },
+  { href: '#solutions', label: 'Soluções' },
+  { href: '#process', label: 'Processo' },
+  { href: '#about', label: 'Sobre' },
+  { href: '#contact', label: 'Contato' },
+];
 
 export function Footer() {
-  const [showAlert, setShowAlert] = useState(false);
-
-  const handleCopyPhone = () => {
-    copyPhoneNumber(setShowAlert);
-  };
-
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
-        {showAlert && (
-          <AlertMessage message="Número copiado para a área de transferência!" />
-        )}
-        <h3 className={styles.logo}>Koru Company</h3>
-        <ContactInfo onCopyPhone={handleCopyPhone} />
+        <div className={styles.brand}>
+          <h2>Koru Company</h2>
+          <p>
+            Soluções digitais sob medida para empresas que querem
+            operar melhor.
+          </p>
+        </div>
+
+        <nav className={styles.links} aria-label="Links do rodapé">
+          {links.map((link) => (
+            <Link href={link.href} key={link.href}>
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+
+        <div className={styles.contact}>
+          <a
+            href="https://wa.me/5519986011419"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            WhatsApp
+          </a>
+          <a href="mailto:korutecnologia@gmail.com">
+            korutecnologia@gmail.com
+          </a>
+          <span>Indaiatuba - SP</span>
+        </div>
+
         <SocialLinks />
+
         <p className={styles.copy}>
-          © {new Date().getFullYear()} Koru Company. Todos
-          os direitos reservados.
+          © 2026 Koru Company. Todos os direitos reservados.
         </p>
       </div>
     </footer>

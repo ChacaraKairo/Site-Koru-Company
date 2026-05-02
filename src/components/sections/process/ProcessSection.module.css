@@ -1,0 +1,94 @@
+.section {
+  padding: 7rem 0;
+  background: #050505;
+}
+
+.timeline {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 3.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 2.15rem;
+  left: 6%;
+  right: 6%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.step {
+  position: relative;
+  padding-top: 4.2rem;
+}
+
+.step span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 4.3rem;
+  height: 4.3rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background: #0a0a0a;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 650;
+}
+
+.step h3 {
+  margin: 1.1rem 0 0.65rem;
+  color: #ffffff;
+  font-size: 1.08rem;
+  font-weight: 620;
+}
+
+.step p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .section {
+    padding: 5rem 0;
+  }
+
+  .timeline {
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin-top: 3rem;
+    padding-left: 1.35rem;
+  }
+
+  .timeline::before {
+    top: 0;
+    bottom: 0;
+    left: 2.15rem;
+    right: auto;
+    width: 1px;
+    height: auto;
+  }
+
+  .step {
+    min-height: 160px;
+    padding: 0 0 2.2rem 5rem;
+  }
+
+  .step span {
+    left: 0;
+  }
+
+  .step h3 {
+    margin-top: 0.4rem;
+  }
+}

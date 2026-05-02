@@ -1,4 +1,3 @@
-// Arquivo: src/components/sections/contato/scripts/useContactForm.ts
 import { useState } from 'react';
 
 export interface FormData {
@@ -7,53 +6,9 @@ export interface FormData {
   phone: string;
   email: string;
   message?: string;
-  endereco: string;
 }
 
-/**
- * Nova função para buscar o endereço.
- * Ela retorna uma Promise com o endereço em string.
- */
-const getAddress = (): Promise<string> => {
-  return new Promise((resolve) => {
-    if (!('geolocation' in navigator)) {
-      // Retorna uma string vazia ou de erro se não for suportado
-      return resolve('Geolocalização não suportada');
-    }
-
-    // Pede a localização
-    navigator.geolocation.getCurrentPosition(
-      async (position) => {
-        const { latitude, longitude } = position.coords;
-        try {
-          // Busca o endereço na API
-          const response = await fetch(
-            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`,
-          );
-          const data = await response.json();
-          // Resolve a Promise com o endereço
-          resolve(
-            data.display_name || 'Endereço não encontrado',
-          );
-        } catch (error) {
-          console.error(
-            'Erro ao buscar o endereço:',
-            error,
-          );
-          resolve('Erro ao buscar endereço');
-        }
-      },
-      (error) => {
-        console.error(
-          'Erro ao obter localização:',
-          error.message,
-        );
-        // Resolve com uma string de erro se for negado
-        resolve('Permissão de localização negada');
-      },
-    );
-  });
-};
+type SubmitStatus = 'idle' | 'submitting' | 'success' | 'error';
 
 export function useContactForm() {
   const [formData, setFormData] = useState<FormData>({
@@ -62,67 +17,73 @@ export function useContactForm() {
     phone: '',
     email: '',
     message: '',
-    endereco: '', // O endereço começa vazio
   });
+  const [status, setStatus] = useState<SubmitStatus>('idle');
+  const [feedback, setFeedback] = useState('');
 
-  // Atualiza o estado conforme o usuário digita
   function handleChange(
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement
-    >,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) {
     setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
+
+    if (status !== 'idle') {
+      setStatus('idle');
+      setFeedback('');
+    }
   }
 
-  // Envia os dados para a API e limpa os campos após sucesso
-  // Transformamos a handleSubmit em 'async'
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    setStatus('submitting');
+    setFeedback('');
 
-    // 1. PRIMEIRO, busca a localização atual
-    const endereco = await getAddress();
-
-    // 2. JUNTA os dados do formulário com a localização obtida
-    const finalFormData = {
-      ...formData,
-      endereco: endereco,
-    };
-
-    // 3. DEPOIS, envia tudo para sua API
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        // Envia os dados finais (com o endereço)
-        body: JSON.stringify(finalFormData),
+        body: JSON.stringify(formData),
       });
 
       if (!response.ok) {
         const err = await response.json();
-        throw new Error(
-          err.error || 'Erro ao enviar formulário',
-        );
+        throw new Error(err.error || 'Erro ao enviar formulario');
       }
 
-      alert('Mensagem enviada com sucesso!');
+      const whatsappMessage = encodeURIComponent(
+        `Olá! Meu nome é ${formData.name}, sou da empresa ${
+          formData.company || 'não informada'
+        }. Gostaria de conversar com a Koru sobre: ${
+          formData.message || 'uma solução digital'
+        }. Meu telefone é ${formData.phone} e meu e-mail é ${formData.email}.`,
+      );
 
-      // 4. Limpa o formulário para o próximo envio
       setFormData({
         name: '',
         company: '',
         phone: '',
         email: '',
         message: '',
-        endereco: '', // O endereço é limpo aqui
       });
+      setStatus('success');
+      setFeedback(
+        'Mensagem enviada. Se preferir, a conversa também pode continuar pelo WhatsApp.',
+      );
+      window.open(
+        `https://wa.me/5519986011419?text=${whatsappMessage}`,
+        '_blank',
+        'noopener,noreferrer',
+      );
     } catch (error) {
-      console.error('Erro ao enviar formulário:', error);
-      alert('Erro ao enviar mensagem. Tente novamente.');
+      console.error('Erro ao enviar formulario:', error);
+      setStatus('error');
+      setFeedback(
+        'Não foi possível enviar agora. Tente novamente em instantes.',
+      );
     }
   }
 
@@ -130,6 +91,7 @@ export function useContactForm() {
     formData,
     handleChange,
     handleSubmit,
-    setFormData, // setFormData ainda é necessário para o ContactForm.tsx
+    status,
+    feedback,
   };
 }

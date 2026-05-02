@@ -1,4 +1,4 @@
-import React from 'react';
+import Image from 'next/image';
 
 interface SlideProps {
   imageUrl: string;
@@ -13,10 +13,12 @@ const Slide = ({ imageUrl, alt, isActive }: SlideProps) => {
         isActive ? 'opacity-100 z-10' : 'opacity-0 z-0'
       }`}
     >
-      <img
+      <Image
         src={imageUrl}
         alt={alt}
-        className="w-full h-full object-cover rounded-xl"
+        fill
+        sizes="100vw"
+        className="rounded-xl object-cover"
       />
     </div>
   );
