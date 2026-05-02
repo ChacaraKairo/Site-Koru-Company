@@ -52,11 +52,11 @@
   font-size: 0.84rem;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 860px) {
   .header {
-    background: rgba(5, 5, 5, 0.92);
+    background: #050505;
     border-bottom-color: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(18px);
+    backdrop-filter: none;
   }
 
   .nav {
