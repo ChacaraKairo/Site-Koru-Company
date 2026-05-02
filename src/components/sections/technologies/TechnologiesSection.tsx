@@ -1,32 +1,45 @@
 import { Container } from '@/components/ui/Container';
 import styles from './TechnologiesSection.module.css';
 
-const technologies = [
-  'React',
-  'Next.js',
-  'TypeScript',
-  'Node.js',
-  'Python',
-  'PostgreSQL',
-  'Prisma',
-  'APIs',
-  'Automações',
-  'Dashboards',
+const groups = [
+  {
+    title: 'Interfaces',
+    benefit: 'Experiências rápidas, modernas e fáceis de usar.',
+    items: ['React', 'Next.js', 'TypeScript'],
+  },
+  {
+    title: 'Dados',
+    benefit: 'Informação estruturada para relatórios e decisões confiáveis.',
+    items: ['PostgreSQL', 'Prisma', 'SQL', 'Dashboards'],
+  },
+  {
+    title: 'Automações',
+    benefit: 'APIs, integrações e rotinas para reduzir trabalho manual.',
+    items: ['Node.js', 'Python', 'APIs', 'Webhooks'],
+  },
 ];
 
 export function TechnologiesSection() {
   return (
     <section className={styles.section}>
-      <Container className={styles.container}>
-        <div className={styles.copy}>
+      <Container>
+        <div className={styles.header}>
           <p>Tecnologias</p>
-          <h2>Stack moderna para soluções confiáveis.</h2>
+          <h2>Stack moderna traduzida em resultado prático.</h2>
         </div>
-        <ul className={styles.list}>
-          {technologies.map((technology) => (
-            <li key={technology}>{technology}</li>
+        <div className={styles.grid}>
+          {groups.map((group) => (
+            <article className={styles.card} key={group.title}>
+              <h3>{group.title}</h3>
+              <p>{group.benefit}</p>
+              <ul>
+                {group.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </article>
           ))}
-        </ul>
+        </div>
       </Container>
     </section>
   );

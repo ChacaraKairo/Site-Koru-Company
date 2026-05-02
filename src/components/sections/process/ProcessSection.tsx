@@ -51,9 +51,10 @@ export function ProcessSection() {
           ))}
         </ol>
         <p className={styles.note}>
-          Projetos simples podem começar com um diagnóstico rápido.
-          Projetos maiores são divididos em etapas para reduzir risco e
-          dar visibilidade.
+          Nem todo projeto precisa começar grande. Podemos iniciar com
+          um diagnóstico, um MVP ou uma automação pontual. Projetos
+          maiores são divididos em etapas para reduzir risco e dar
+          visibilidade.
         </p>
       </Container>
     </section>

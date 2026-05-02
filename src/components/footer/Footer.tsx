@@ -7,8 +7,8 @@ const links = [
   { href: '#hero', label: 'Início' },
   { href: '#problems', label: 'Problemas' },
   { href: '#solutions', label: 'Soluções' },
+  { href: '#projects', label: 'Projetos' },
   { href: '#process', label: 'Processo' },
-  { href: '#about', label: 'Sobre' },
   { href: '#contact', label: 'Contato' },
 ];
 
@@ -46,6 +46,10 @@ export function Footer() {
 
         <SocialLinks />
 
+        <p className={styles.privacy}>
+          Os dados enviados pelo formulário são usados apenas para
+          retorno comercial e atendimento da solicitação.
+        </p>
         <p className={styles.copy}>
           © 2026 Koru Company. Todos os direitos reservados.
         </p>

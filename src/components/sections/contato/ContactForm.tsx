@@ -8,15 +8,16 @@ export function ContactForm() {
     handleSubmit,
     status,
     feedback,
+    fieldErrors,
   } = useContactForm();
 
   const isSubmitting = status === 'submitting';
 
   return (
-    <form className={styles.contactForm} onSubmit={handleSubmit}>
+    <form className={styles.contactForm} onSubmit={handleSubmit} noValidate>
       <p className={styles.notice}>
-        Ao enviar, também abriremos o WhatsApp com a mensagem pronta
-        para agilizar o atendimento.
+        Após o envio, a Koru recebe sua mensagem e também abre o
+        WhatsApp com o texto pronto para agilizar o atendimento.
       </p>
       <label htmlFor="name">Nome *</label>
       <input
@@ -27,7 +28,14 @@ export function ContactForm() {
         autoComplete="name"
         value={formData.name}
         onChange={handleChange}
+        aria-invalid={Boolean(fieldErrors.name)}
+        aria-describedby={fieldErrors.name ? 'name-error' : undefined}
       />
+      {fieldErrors.name && (
+        <span id="name-error" className={styles.fieldError}>
+          {fieldErrors.name}
+        </span>
+      )}
 
       <label htmlFor="company">Empresa</label>
       <input
@@ -45,12 +53,17 @@ export function ContactForm() {
         id="phone"
         name="phone"
         required
-        pattern="[\d\s()+.-]{10,20}"
-        title="Informe um telefone válido com DDD."
         autoComplete="tel"
         value={formData.phone}
         onChange={handleChange}
+        aria-invalid={Boolean(fieldErrors.phone)}
+        aria-describedby={fieldErrors.phone ? 'phone-error' : undefined}
       />
+      {fieldErrors.phone && (
+        <span id="phone-error" className={styles.fieldError}>
+          {fieldErrors.phone}
+        </span>
+      )}
 
       <label htmlFor="email">E-mail *</label>
       <input
@@ -61,7 +74,14 @@ export function ContactForm() {
         autoComplete="email"
         value={formData.email}
         onChange={handleChange}
+        aria-invalid={Boolean(fieldErrors.email)}
+        aria-describedby={fieldErrors.email ? 'email-error' : undefined}
       />
+      {fieldErrors.email && (
+        <span id="email-error" className={styles.fieldError}>
+          {fieldErrors.email}
+        </span>
+      )}
 
       <label htmlFor="message">Mensagem</label>
       <textarea

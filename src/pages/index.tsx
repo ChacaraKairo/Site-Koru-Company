@@ -3,6 +3,7 @@ import { Footer } from '@/components/footer/Footer';
 import { Header } from '@/components/header/Header';
 import { AboutSection } from '@/components/sections/about/AboutSection';
 import { SectionContact } from '@/components/sections/contato/SectionContact';
+import { FAQSection } from '@/components/sections/faq/FAQSection';
 import { FinalCTA } from '@/components/sections/final-cta/FinalCTA';
 import { HeroSection } from '@/components/sections/hero/HeroSection';
 import { ImpactSection } from '@/components/sections/impact/ImpactSection';
@@ -10,6 +11,7 @@ import { ProblemsSection } from '@/components/sections/problems/ProblemsSection'
 import { ProcessSection } from '@/components/sections/process/ProcessSection';
 import { ProofSection } from '@/components/sections/proof/ProofSection';
 import { SolutionsSection } from '@/components/sections/solutions/SolutionsSection';
+import { StartSection } from '@/components/sections/start/StartSection';
 import { TechnologiesSection } from '@/components/sections/technologies/TechnologiesSection';
 import { CONTACT } from '@/config/contact';
 
@@ -65,12 +67,14 @@ export default function Home() {
       <main>
         <HeroSection />
         <ProblemsSection />
-        <ImpactSection />
         <SolutionsSection />
+        <ImpactSection />
         <ProofSection />
         <ProcessSection />
+        <StartSection />
         <TechnologiesSection />
         <AboutSection />
+        <FAQSection />
         <SectionContact />
         <FinalCTA />
       </main>

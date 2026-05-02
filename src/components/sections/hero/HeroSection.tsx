@@ -9,16 +9,16 @@ import styles from './HeroSection.module.css';
 const whatsappLink = createWhatsAppLink(diagnosticMessage);
 
 const markers = [
-  'Menos tarefas manuais',
+  'Menos retrabalho',
   'Mais controle operacional',
   'Decisões com dados reais',
 ];
 
-const mockupItems = [
-  'Operações',
-  'Automações',
-  'Dashboards',
-  'Sistemas internos',
+const processRows = [
+  { label: 'Solicitações abertas', value: 'triagem' },
+  { label: 'Processos em andamento', value: 'status' },
+  { label: 'Automações ativas', value: 'rotinas' },
+  { label: 'Indicadores operacionais', value: 'painéis' },
 ];
 
 export function HeroSection() {
@@ -28,24 +28,26 @@ export function HeroSection() {
         <div className={styles.content}>
           <p className={styles.eyebrow}>Software house em Indaiatuba - SP</p>
           <h1>
-            Transformamos processos manuais em sistemas, automações e
-            dados para decisão.
+            Sua empresa cresceu, mas os processos ainda dependem de
+            planilhas e controles manuais?
           </h1>
           <p className={styles.subtitle}>
-            Para pequenas e médias empresas que precisam organizar
-            processos, automatizar tarefas e crescer com mais controle.
+            A Koru cria sistemas, automações e dashboards para organizar
+            sua operação, reduzir retrabalho e transformar dados em
+            decisão.
           </p>
           <div className={styles.actions}>
             <CTAButton href={whatsappLink} fullWidthOnMobile>
               Agendar diagnóstico
             </CTAButton>
-            <CTAButton href="#solutions" variant="secondary" fullWidthOnMobile>
-              Conhecer soluções
+            <CTAButton href="#problems" variant="secondary" fullWidthOnMobile>
+              Ver como podemos ajudar
             </CTAButton>
           </div>
           <p className={styles.microcopy}>
-            Uma conversa rápida para entender sua operação e mapear
-            oportunidades de automação, sistemas ou dados.
+            Comece com uma conversa estratégica antes de investir em
+            desenvolvimento. Diagnóstico inicial sem compromisso, com
+            atendimento para empresas em Indaiatuba e todo o Brasil.
           </p>
           <ul className={styles.markers} aria-label="Benefícios da Koru">
             {markers.map((marker) => (
@@ -60,9 +62,19 @@ export function HeroSection() {
             <span />
           </div>
           <div className={styles.mockupBody}>
+            <div className={styles.panelTop}>
+              <div>
+                <span>Painel operacional</span>
+                <strong>Visão da rotina</strong>
+              </div>
+              <small>demo</small>
+            </div>
             <div className={styles.mockupList}>
-              {mockupItems.map((item) => (
-                <span key={item}>{item}</span>
+              {processRows.map((item) => (
+                <span key={item.label}>
+                  {item.label}
+                  <small>{item.value}</small>
+                </span>
               ))}
             </div>
             <div className={styles.chart}>

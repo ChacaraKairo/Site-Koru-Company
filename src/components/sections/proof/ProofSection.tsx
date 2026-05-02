@@ -5,6 +5,7 @@ import styles from './ProofSection.module.css';
 const projects = [
   {
     name: 'Sistema de gestão interno',
+    type: 'system',
     problem: 'Processos espalhados entre planilhas, mensagens e controles manuais.',
     solution:
       'Centralização de cadastros, solicitações, status e acompanhamento operacional em uma aplicação web.',
@@ -13,6 +14,7 @@ const projects = [
   },
   {
     name: 'Dashboard financeiro',
+    type: 'dashboard',
     problem: 'Dados financeiros difíceis de acompanhar e comparar ao longo do mês.',
     solution:
       'Painéis com indicadores, filtros e leitura executiva para apoiar decisões de caixa e crescimento.',
@@ -21,6 +23,7 @@ const projects = [
   },
   {
     name: 'Automação de atendimento',
+    type: 'automation',
     problem: 'Respostas repetitivas e triagem manual consumindo tempo da equipe.',
     solution:
       'Fluxos automatizados para organizar entradas, padronizar respostas e direcionar solicitações.',
@@ -29,19 +32,38 @@ const projects = [
   },
 ];
 
+function DemoMockup({ type }: { type: string }) {
+  return (
+    <div className={`${styles.mockup} ${styles[type]}`} aria-hidden="true">
+      <div className={styles.mockupBar}>
+        <span />
+        <span />
+        <span />
+      </div>
+      <div className={styles.mockupCanvas}>
+        <i />
+        <i />
+        <i />
+        <i />
+      </div>
+    </div>
+  );
+}
+
 export function ProofSection() {
   return (
-    <section className={styles.section}>
+    <section id="projects" className={styles.section}>
       <Container>
         <SectionHeading
-          eyebrow="Projetos e labs"
+          eyebrow="Exemplos de solução"
           title="Projetos que mostram como pensamos."
-          subtitle="Enquanto cases públicos são construídos, apresentamos exemplos demonstrativos de problemas, soluções e entregáveis que fazem parte do nosso método."
+          subtitle="Estes exemplos demonstram o tipo de problema que analisamos, a forma como estruturamos soluções e os entregáveis que podem fazer parte de um projeto real."
           align="center"
         />
         <div className={styles.grid}>
           {projects.map((project) => (
             <article className={styles.card} key={project.name}>
+              <DemoMockup type={project.type} />
               <div>
                 <p className={styles.label}>Projeto demonstrativo</p>
                 <h3>{project.name}</h3>

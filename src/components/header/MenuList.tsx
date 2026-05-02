@@ -11,8 +11,8 @@ const menuItems: MenuItem[] = [
   { href: '#hero', label: 'Início' },
   { href: '#problems', label: 'Problemas' },
   { href: '#solutions', label: 'Soluções' },
+  { href: '#projects', label: 'Projetos' },
   { href: '#process', label: 'Processo' },
-  { href: '#about', label: 'Sobre' },
   { href: '#contact', label: 'Contato' },
 ];
 

@@ -8,30 +8,35 @@ const solutions = [
     title: 'Sistemas sob medida',
     text: 'Aplicações web, sistemas internos, portais e plataformas personalizadas para centralizar processos e melhorar a operação.',
     cta: 'Planejar um sistema',
-    deliverables: ['Requisitos', 'Protótipo', 'Desenvolvimento', 'Deploy'],
+    complexity: 'Projeto sob medida',
+    deliverables: ['Mapeamento', 'Protótipo', 'Desenvolvimento', 'Publicação', 'Treinamento'],
   },
   {
     title: 'Automação de processos',
     text: 'Automação de tarefas repetitivas, integração entre ferramentas e fluxos inteligentes para reduzir esforço manual.',
     cta: 'Mapear automações',
-    deliverables: ['Mapeamento', 'Fluxo automatizado', 'Integrações', 'Monitoramento'],
+    complexity: 'Ideal para começar',
+    deliverables: ['Mapeamento', 'Fluxo automatizado', 'Integrações', 'Testes', 'Acompanhamento'],
   },
   {
     title: 'Engenharia e análise de dados',
     text: 'Dashboards, indicadores e pipelines de dados para transformar informações dispersas em decisões confiáveis.',
     cta: 'Criar dashboards',
+    complexity: 'Pode evoluir por etapas',
     deliverables: ['Indicadores', 'Modelagem', 'Painéis', 'Rotina de dados'],
   },
   {
     title: 'Consultoria técnica',
     text: 'Apoio estratégico para arquitetura, modernização de sistemas, escolha de tecnologias e melhoria de processos digitais.',
-    cta: 'Avaliar arquitetura',
+    cta: 'Avaliar tecnologia',
+    complexity: 'Diagnóstico recomendado',
     deliverables: ['Diagnóstico', 'Plano técnico', 'Priorização', 'Evolução'],
   },
   {
     title: 'Sites e plataformas digitais',
     text: 'Experiências web modernas, rápidas e responsivas para empresas que precisam transmitir confiança e converter melhor.',
-    cta: 'Criar presença digital',
+    cta: 'Melhorar presença digital',
+    complexity: 'Escopo claro',
     deliverables: ['UX/UI', 'Desenvolvimento', 'Performance', 'SEO básico'],
   },
 ];
@@ -57,7 +62,10 @@ export function SolutionsSection() {
         <div className={styles.grid}>
           {solutions.map((solution, index) => (
             <article className={styles.card} key={solution.title}>
-              <span>{String(index + 1).padStart(2, '0')}</span>
+              <div className={styles.cardTop}>
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <small>{solution.complexity}</small>
+              </div>
               <h3>{solution.title}</h3>
               <p>{solution.text}</p>
               <div className={styles.deliverables}>
