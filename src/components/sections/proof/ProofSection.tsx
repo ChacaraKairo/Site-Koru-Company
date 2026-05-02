@@ -2,10 +2,21 @@ import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import styles from './ProofSection.module.css';
 
-const projects = [
+type Project = {
+  name: string;
+  visual: 'system' | 'dashboard' | 'automation';
+  caseType: 'demo' | 'real';
+  problem: string;
+  solution: string;
+  stack: string[];
+  outcome: string;
+};
+
+const projects: Project[] = [
   {
     name: 'Sistema de gestão interno',
-    type: 'system',
+    visual: 'system',
+    caseType: 'demo',
     problem: 'Processos espalhados entre planilhas, mensagens e controles manuais.',
     solution:
       'Centralização de cadastros, solicitações, status e acompanhamento operacional em uma aplicação web.',
@@ -14,7 +25,8 @@ const projects = [
   },
   {
     name: 'Dashboard financeiro',
-    type: 'dashboard',
+    visual: 'dashboard',
+    caseType: 'demo',
     problem: 'Dados financeiros difíceis de acompanhar e comparar ao longo do mês.',
     solution:
       'Painéis com indicadores, filtros e leitura executiva para apoiar decisões de caixa e crescimento.',
@@ -23,7 +35,8 @@ const projects = [
   },
   {
     name: 'Automação de atendimento',
-    type: 'automation',
+    visual: 'automation',
+    caseType: 'demo',
     problem: 'Respostas repetitivas e triagem manual consumindo tempo da equipe.',
     solution:
       'Fluxos automatizados para organizar entradas, padronizar respostas e direcionar solicitações.',
@@ -32,19 +45,83 @@ const projects = [
   },
 ];
 
-function DemoMockup({ type }: { type: string }) {
+function DemoMockup({ visual }: { visual: Project['visual'] }) {
+  if (visual === 'system') {
+    return (
+      <div className={styles.mockup} aria-hidden="true">
+        <div className={styles.mockupBar}>
+          <span />
+          <span />
+          <span />
+        </div>
+        <div className={styles.table}>
+          <div className={styles.tableHeader}>
+            <span>Solicitação</span>
+            <span>Status</span>
+            <span>Resp.</span>
+            <span>Prior.</span>
+          </div>
+          {['Cadastro cliente', 'Aprovação pedido', 'Suporte interno'].map(
+            (row, index) => (
+              <div className={styles.tableRow} key={row}>
+                <span>{row}</span>
+                <i>{index === 0 ? 'novo' : index === 1 ? 'andamento' : 'fila'}</i>
+                <small>{index === 0 ? 'Ana' : index === 1 ? 'Leo' : 'Kai'}</small>
+                <b>{index === 1 ? 'alta' : 'média'}</b>
+              </div>
+            ),
+          )}
+        </div>
+      </div>
+    );
+  }
+
+  if (visual === 'dashboard') {
+    return (
+      <div className={styles.mockup} aria-hidden="true">
+        <div className={styles.mockupBar}>
+          <span />
+          <span />
+          <span />
+        </div>
+        <div className={styles.dashboardGrid}>
+          <div>
+            <small>Receita</small>
+            <strong>R$ --</strong>
+          </div>
+          <div>
+            <small>Despesas</small>
+            <strong>R$ --</strong>
+          </div>
+          <div>
+            <small>Saldo</small>
+            <strong>mês</strong>
+          </div>
+          <div className={styles.miniChart}>
+            <i />
+            <i />
+            <i />
+            <i />
+            <i />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className={`${styles.mockup} ${styles[type]}`} aria-hidden="true">
+    <div className={styles.mockup} aria-hidden="true">
       <div className={styles.mockupBar}>
         <span />
         <span />
         <span />
       </div>
-      <div className={styles.mockupCanvas}>
-        <i />
-        <i />
-        <i />
-        <i />
+      <div className={styles.flow}>
+        {['Entrada', 'Triagem', 'Resposta', 'Encaminhamento'].map((step) => (
+          <div key={step}>
+            <span>{step}</span>
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -63,9 +140,13 @@ export function ProofSection() {
         <div className={styles.grid}>
           {projects.map((project) => (
             <article className={styles.card} key={project.name}>
-              <DemoMockup type={project.type} />
+              <DemoMockup visual={project.visual} />
               <div>
-                <p className={styles.label}>Projeto demonstrativo</p>
+                <p className={styles.label}>
+                  {project.caseType === 'real'
+                    ? 'Case real'
+                    : 'Projeto demonstrativo'}
+                </p>
                 <h3>{project.name}</h3>
               </div>
               <dl>

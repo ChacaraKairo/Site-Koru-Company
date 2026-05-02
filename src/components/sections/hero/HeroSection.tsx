@@ -28,13 +28,13 @@ export function HeroSection() {
         <div className={styles.content}>
           <p className={styles.eyebrow}>Software house em Indaiatuba - SP</p>
           <h1>
-            Sua empresa cresceu, mas os processos ainda dependem de
-            planilhas e controles manuais?
+            Sistemas, automações e dashboards para empresas que ainda
+            dependem de processos manuais.
           </h1>
           <p className={styles.subtitle}>
-            A Koru cria sistemas, automações e dashboards para organizar
-            sua operação, reduzir retrabalho e transformar dados em
-            decisão.
+            A Koru organiza sua operação com tecnologia sob medida para
+            reduzir retrabalho, centralizar informações e transformar
+            dados em decisão.
           </p>
           <div className={styles.actions}>
             <CTAButton href={whatsappLink} fullWidthOnMobile>
@@ -45,9 +45,8 @@ export function HeroSection() {
             </CTAButton>
           </div>
           <p className={styles.microcopy}>
-            Comece com uma conversa estratégica antes de investir em
-            desenvolvimento. Diagnóstico inicial sem compromisso, com
-            atendimento para empresas em Indaiatuba e todo o Brasil.
+            Diagnóstico inicial sem compromisso para entender seu
+            cenário e indicar o melhor próximo passo.
           </p>
           <ul className={styles.markers} aria-label="Benefícios da Koru">
             {markers.map((marker) => (

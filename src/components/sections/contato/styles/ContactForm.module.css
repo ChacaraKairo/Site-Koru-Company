@@ -67,6 +67,15 @@
   line-height: 1.45;
 }
 
+.privacyNotice a {
+  color: rgba(184, 242, 230, 0.88);
+  text-decoration: none;
+}
+
+.privacyNotice a:hover {
+  color: #ffffff;
+}
+
 .contactForm input[aria-invalid='true'] {
   border-color: rgba(252, 165, 165, 0.72);
 }

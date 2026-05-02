@@ -46,35 +46,127 @@
   background: rgba(255, 255, 255, 0.28);
 }
 
-.mockupCanvas {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.7rem;
-  min-height: 150px;
+.table,
+.dashboardGrid,
+.flow {
+  min-height: 180px;
   padding: 0.9rem;
 }
 
-.mockupCanvas i {
-  border-radius: 14px;
-  background: linear-gradient(135deg, rgba(184, 242, 230, 0.2), rgba(255, 255, 255, 0.04));
+.table {
+  display: grid;
+  gap: 0.45rem;
 }
 
-.dashboard .mockupCanvas i:nth-child(1) {
-  grid-column: span 2;
+.tableHeader,
+.tableRow {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr 0.55fr 0.65fr;
+  gap: 0.5rem;
+  align-items: center;
 }
 
-.automation .mockupCanvas {
-  grid-template-columns: 1fr;
+.tableHeader {
+  color: rgba(255, 255, 255, 0.44);
+  font-size: 0.68rem;
 }
 
-.automation .mockupCanvas i {
-  min-height: 24px;
+.tableRow {
+  min-height: 36px;
+  padding: 0 0.55rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.055);
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.72rem;
+}
+
+.tableRow i,
+.tableRow b {
   border-radius: 999px;
+  padding: 0.22rem 0.38rem;
+  background: rgba(184, 242, 230, 0.12);
+  color: rgba(184, 242, 230, 0.82);
+  font-style: normal;
+  font-weight: 600;
+  text-align: center;
 }
 
-.system .mockupCanvas i:nth-child(1),
-.system .mockupCanvas i:nth-child(4) {
-  background: rgba(255, 255, 255, 0.07);
+.tableRow small {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.dashboardGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.dashboardGrid div {
+  min-height: 70px;
+  padding: 0.7rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.dashboardGrid small {
+  color: rgba(255, 255, 255, 0.46);
+  font-size: 0.68rem;
+}
+
+.dashboardGrid strong {
+  display: block;
+  margin-top: 0.35rem;
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+.miniChart {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: end;
+  gap: 0.45rem;
+}
+
+.miniChart i {
+  flex: 1;
+  border-radius: 999px 999px 0 0;
+  background: linear-gradient(180deg, rgba(184, 242, 230, 0.76), rgba(184, 242, 230, 0.1));
+}
+
+.miniChart i:nth-child(1) { height: 34%; }
+.miniChart i:nth-child(2) { height: 58%; }
+.miniChart i:nth-child(3) { height: 46%; }
+.miniChart i:nth-child(4) { height: 78%; }
+.miniChart i:nth-child(5) { height: 64%; }
+
+.flow {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.flow div {
+  position: relative;
+  display: flex;
+  min-height: 34px;
+  align-items: center;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.flow div:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 28px;
+  bottom: -0.55rem;
+  width: 1px;
+  height: 0.55rem;
+  background: rgba(184, 242, 230, 0.5);
+}
+
+.flow span {
+  margin-left: 0.9rem;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.78rem;
 }
 
 .label {

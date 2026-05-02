@@ -1,6 +1,7 @@
 import { CTAButton } from '@/components/ui/CTAButton';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
+import { createWhatsAppLink } from '@/config/contact';
 import styles from './SolutionsSection.module.css';
 
 const operationSolutions = [
@@ -8,6 +9,7 @@ const operationSolutions = [
     title: 'Sistemas sob medida',
     text: 'Aplicações web, sistemas internos, portais e plataformas para centralizar processos.',
     cta: 'Planejar um sistema',
+    message: 'Olá! Quero planejar um sistema sob medida com a Koru Company.',
     complexity: 'Projeto sob medida',
     deliverables: ['Mapeamento', 'Protótipo', 'Desenvolvimento', 'Publicação', 'Treinamento'],
   },
@@ -15,6 +17,7 @@ const operationSolutions = [
     title: 'Automação de processos',
     text: 'Fluxos inteligentes e integrações para reduzir tarefas repetitivas e esforço manual.',
     cta: 'Mapear automações',
+    message: 'Olá! Quero mapear automações para a minha operação com a Koru Company.',
     complexity: 'Ideal para começar',
     deliverables: ['Mapeamento', 'Fluxo automatizado', 'Integrações', 'Testes', 'Acompanhamento'],
   },
@@ -22,6 +25,7 @@ const operationSolutions = [
     title: 'Engenharia e análise de dados',
     text: 'Dashboards, indicadores e pipelines para transformar informação dispersa em decisão.',
     cta: 'Criar dashboards',
+    message: 'Olá! Quero criar dashboards e indicadores com a Koru Company.',
     complexity: 'Pode evoluir por etapas',
     deliverables: ['Indicadores', 'Modelagem', 'Painéis', 'Rotina de dados'],
   },
@@ -29,6 +33,7 @@ const operationSolutions = [
     title: 'Consultoria técnica',
     text: 'Apoio para arquitetura, modernização, escolha de tecnologias e melhoria de processos.',
     cta: 'Avaliar tecnologia',
+    message: 'Olá! Quero avaliar a tecnologia e os processos digitais da minha empresa com a Koru Company.',
     complexity: 'Diagnóstico recomendado',
     deliverables: ['Diagnóstico', 'Plano técnico', 'Priorização', 'Evolução'],
   },
@@ -56,8 +61,8 @@ export function SolutionsSection() {
         <div className={styles.header}>
           <SectionHeading
             eyebrow="Soluções"
-            title="Soluções construídas para o seu fluxo real de trabalho."
-            subtitle="Não sabe por onde começar? Começamos pelo diagnóstico: entendemos o processo, priorizamos oportunidades e desenhamos o caminho certo."
+            title="Tecnologia sob medida para organizar sua operação."
+            subtitle="Começamos pelo diagnóstico, entendemos o fluxo real de trabalho e construímos a solução certa para o momento da empresa."
           />
           <CTAButton
             href="#contact"
@@ -83,7 +88,7 @@ export function SolutionsSection() {
                   <small key={deliverable}>{deliverable}</small>
                 ))}
               </div>
-              <CTAButton href="#contact" variant="ghost">
+              <CTAButton href={createWhatsAppLink(solution.message)} variant="ghost">
                 {solution.cta}
               </CTAButton>
             </article>

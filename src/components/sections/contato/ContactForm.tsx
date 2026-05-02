@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import styles from './styles/ContactForm.module.css';
 import { useContactForm } from './scripts/useContactForm';
@@ -124,7 +125,8 @@ export function ContactForm() {
 
       <p className={styles.privacyNotice}>
         Ao enviar, você concorda que a Koru utilize seus dados apenas
-        para responder ao contato solicitado.
+        para responder ao contato solicitado. Leia a{' '}
+        <Link href="/politica-de-privacidade">política de privacidade</Link>.
       </p>
 
       <button
@@ -132,7 +134,7 @@ export function ContactForm() {
         className={styles.submitBtn}
         disabled={isSubmitting}
       >
-        {isSubmitting ? 'Enviando...' : 'Enviar mensagem'}
+        {isSubmitting ? 'Enviando...' : 'Enviar cenário'}
       </button>
     </form>
   );

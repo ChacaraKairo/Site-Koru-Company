@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { CONTACT } from '@/config/contact';
 import { Container } from '@/components/ui/Container';
 import styles from './AboutSection.module.css';
 
@@ -59,6 +60,16 @@ export function AboutSection() {
               transformar processos manuais em soluções digitais claras,
               úteis e sustentáveis.
             </p>
+            <div className={styles.founderLinks}>
+              <a href={`mailto:${CONTACT.email}`}>E-mail</a>
+              <a
+                href="https://www.linkedin.com/company/108584580"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LinkedIn da Koru
+              </a>
+            </div>
           </div>
         </div>
         <div className={styles.pillars}>

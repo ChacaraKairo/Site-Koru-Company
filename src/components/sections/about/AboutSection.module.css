@@ -83,6 +83,27 @@
   line-height: 1.65;
 }
 
+.founderLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1rem;
+}
+
+.founderLinks a {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  padding: 0.45rem 0.7rem;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 0.82rem;
+  text-decoration: none;
+}
+
+.founderLinks a:hover {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.26);
+}
+
 .pillars {
   grid-column: 1 / -1;
   display: grid;

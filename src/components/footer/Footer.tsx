@@ -5,10 +5,8 @@ import styles from './styles/Footer.module.css';
 
 const links = [
   { href: '#hero', label: 'Início' },
-  { href: '#problems', label: 'Problemas' },
   { href: '#solutions', label: 'Soluções' },
   { href: '#projects', label: 'Projetos' },
-  { href: '#process', label: 'Processo' },
   { href: '#contact', label: 'Contato' },
 ];
 
@@ -30,6 +28,9 @@ export function Footer() {
               {link.label}
             </Link>
           ))}
+          <Link href="/politica-de-privacidade">
+            Política de privacidade
+          </Link>
         </nav>
 
         <div className={styles.contact}>

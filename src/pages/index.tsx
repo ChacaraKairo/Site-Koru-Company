@@ -3,10 +3,10 @@ import { Footer } from '@/components/footer/Footer';
 import { Header } from '@/components/header/Header';
 import { AboutSection } from '@/components/sections/about/AboutSection';
 import { SectionContact } from '@/components/sections/contato/SectionContact';
+import { DeliverablesSection } from '@/components/sections/deliverables/DeliverablesSection';
 import { FAQSection } from '@/components/sections/faq/FAQSection';
 import { FinalCTA } from '@/components/sections/final-cta/FinalCTA';
 import { HeroSection } from '@/components/sections/hero/HeroSection';
-import { ImpactSection } from '@/components/sections/impact/ImpactSection';
 import { ProblemsSection } from '@/components/sections/problems/ProblemsSection';
 import { ProcessSection } from '@/components/sections/process/ProcessSection';
 import { ProofSection } from '@/components/sections/proof/ProofSection';
@@ -87,7 +87,7 @@ export default function Home() {
         <HeroSection />
         <ProblemsSection />
         <SolutionsSection />
-        <ImpactSection />
+        <DeliverablesSection />
         <ProofSection />
         <ProcessSection />
         <TechnologiesSection />
