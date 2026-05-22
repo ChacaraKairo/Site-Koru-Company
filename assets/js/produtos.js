@@ -10,7 +10,7 @@ const PRODUTOS = [
   },
   {
     nome: 'Nosso Zelo',
-    logo: 'produtos/nossozelo/Logo-com-nome.png',
+    logo: 'produtos/nossozelo/logo-com-fundo-nosso-zelo.png',
     descricao: 'Marketplace de serviços para encontrar cuidadores, enfermeiros e acompanhantes para idosos.',
     link: 'https://frontnossozelo.vercel.app',
     status: 'Disponível',
@@ -19,7 +19,7 @@ const PRODUTOS = [
   },
   {
     nome: 'IEZDU',
-    logo: 'produtos/iezdu/ChatGPT Image 22 de mai. de 2026, 14_42_54.png',
+    logo: 'produtos/iezdu/logo-fundo-pastel-iezdu.png',
     descricao: 'App mobile offline-first de organização pessoal, tarefas e foco, com listas, prazos, lembretes, prioridades, temas e companions digitais chamados Liues.',
     link: '',
     status: 'Em breve',
@@ -28,7 +28,7 @@ const PRODUTOS = [
   },
   {
     nome: 'KORRE',
-    logo: 'produtos/korre/Sem título - 22 de maio de 2026 às 13.37.39.png',
+    logo: 'produtos/korre/logo-fundo-korre.png',
     descricao: 'Aplicativo para motoristas de aplicativo controlarem ganhos, despesas e lucro real.',
     link: 'https://play.google.com/store/apps/details?id=korre_app.gestao.korucompany',
     status: 'Disponível',
@@ -38,15 +38,13 @@ const PRODUTOS = [
 ];
 
 function createProductLogo(product) {
-  if (!product.logo) {
-    const fallback = document.createElement('div');
-    fallback.className = 'product-logo product-logo-fallback';
-    fallback.textContent = product.nome;
-    return fallback;
-  }
-
   const wrapper = document.createElement('div');
-  wrapper.className = 'product-logo product-logo-image';
+  wrapper.className = product.logo ? 'product-media product-logo-image' : 'product-media product-logo-fallback';
+
+  if (!product.logo) {
+    wrapper.textContent = product.nome;
+    return wrapper;
+  }
 
   const image = document.createElement('img');
   image.src = product.logo;
@@ -54,7 +52,7 @@ function createProductLogo(product) {
   image.loading = 'lazy';
 
   image.addEventListener('error', () => {
-    wrapper.classList.add('product-logo-fallback');
+    wrapper.className = 'product-media product-logo-fallback';
     wrapper.textContent = product.nome;
   });
 
@@ -71,6 +69,9 @@ function renderProducts() {
   PRODUTOS.forEach((product) => {
     const card = document.createElement('article');
     card.className = 'product-card';
+
+    const content = document.createElement('div');
+    content.className = 'product-content';
 
     const status = document.createElement('p');
     status.className = 'status';
@@ -108,7 +109,8 @@ function renderProducts() {
       link.rel = 'noopener noreferrer';
     }
 
-    card.append(createProductLogo(product), status, title, description, details, link);
+    content.append(status, title, description, details, link);
+    card.append(createProductLogo(product), content);
     list.append(card);
   });
 }
