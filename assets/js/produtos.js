@@ -40,7 +40,7 @@ const PRODUTOS = [
     logo: '',
     descricao: 'Agente de craição de conteúdo para redes sociais, baseado em inputs do usuário',
     link: '',
-    status: '',
+    status: 'EM BREVE',
     idealPara: 'Criadores de conteúdo, pequena e médias empresas',
     principalGanho: 'Otimização na atuação digital, economia de tempo na produção de conteúdo e economia de custos',
   },
