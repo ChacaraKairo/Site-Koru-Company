@@ -1,0 +1,2 @@
+O PNKC é uma plataforma para criação de planos de negócios completos, com formulário guiado, análise financeira, SWOT, cronograma, anexos, Canvas visual e exportação em PDF. A ferramenta ajuda empreendedores a organizar ideias, validar estratégias e transformar projetos em documentos profissionais prontos para apresentação.
+link https://pnkc.vercel.app

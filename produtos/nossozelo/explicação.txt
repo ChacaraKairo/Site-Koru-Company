@@ -1,0 +1,3 @@
+O Nosso Zelo é uma plataforma estilo marketplace de serviços, onde se pode encontrar cuidadores, enfermeiros e acomanhantes apra idosos.
+
+link https://frontnossozelo.vercel.app

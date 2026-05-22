@@ -1,0 +1,1 @@
+IEZDU é um app mobile offline-first de organização pessoal, tarefas e foco. Ele ajuda o usuário a criar listas, definir prazos, receber lembretes, priorizar o que fazer primeiro e personalizar a experiência com temas e companions digitais chamados Liues.
