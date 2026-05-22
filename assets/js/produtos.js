@@ -35,6 +35,15 @@ const PRODUTOS = [
     idealPara: 'Motoristas de aplicativo que querem entender melhor a rentabilidade das corridas.',
     principalGanho: 'Registrar custos e acompanhar quanto realmente sobra no fim do dia.',
   },
+  {
+    nome: 'IAiandra',
+    logo: '',
+    descricao: 'Agente de craição de conteúdo para redes sociais, baseado em inputs do usuário',
+    link: '',
+    status: '',
+    idealPara: 'Criadores de conteúdo, pequena e médias empresas',
+    principalGanho: 'Otimização na atuação digital, economia de tempo na produção de conteúdo e economia de custos',
+  },
 ];
 
 function createProductLogo(product) {
