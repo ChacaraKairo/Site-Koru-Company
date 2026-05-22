@@ -83,16 +83,20 @@ function renderProducts() {
     description.textContent = product.descricao;
 
     const details = document.createElement('dl');
-    details.innerHTML = `
-      <div>
-        <dt>Ideal para</dt>
-        <dd>${product.idealPara}</dd>
-      </div>
-      <div>
-        <dt>Principal ganho</dt>
-        <dd>${product.principalGanho}</dd>
-      </div>
-    `;
+
+    [
+      ['Ideal para', product.idealPara],
+      ['Principal ganho', product.principalGanho],
+    ].forEach(([label, value]) => {
+      const item = document.createElement('div');
+      const term = document.createElement('dt');
+      const detail = document.createElement('dd');
+
+      term.textContent = label;
+      detail.textContent = value;
+      item.append(term, detail);
+      details.append(item);
+    });
 
     const link = document.createElement('a');
     link.className = product.link ? 'btn btn-secondary product-access' : 'btn btn-secondary product-access is-disabled';
