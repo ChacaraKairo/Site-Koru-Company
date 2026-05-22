@@ -433,7 +433,9 @@ h3 {
 .service-detail-grid,
 .product-grid,
 .project-grid,
-.values-grid {
+.values-grid,
+.method-grid,
+.fit-grid {
   display: grid;
   gap: 20px;
 }
@@ -449,12 +451,25 @@ h3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.method-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.fit-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+}
+
 .service-detail-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .mini-card,
-.values-grid article {
+.values-grid article,
+.method-grid li {
   padding: 24px;
   box-shadow: none;
 }
@@ -472,11 +487,47 @@ h3 {
   background: var(--surface);
 }
 
+.service-card-text {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 26px;
+}
+
+.service-card.service-card-text h3,
+.service-card.service-card-text p {
+  padding-inline: 0;
+}
+
+.service-card.service-card-text h3 {
+  margin-top: 0;
+}
+
+.service-card.service-card-text p {
+  padding-bottom: 0;
+}
+
+.service-card-text .text-link {
+  width: fit-content;
+  margin-top: auto;
+}
+
+.result {
+  padding: 14px;
+  border-radius: var(--radius);
+  background: rgba(120, 220, 202, 0.11);
+}
+
 .service-card img,
 .detail-card img {
   width: 100%;
   aspect-ratio: 16 / 10;
   object-fit: cover;
+}
+
+.detail-card img {
+  object-fit: contain;
+  background: #fbf4e9;
 }
 
 .service-card h3,
@@ -525,6 +576,23 @@ h3 {
   font-weight: 850;
 }
 
+.method-grid li {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.method-grid span {
+  display: inline-flex;
+  margin-bottom: 14px;
+  color: var(--brand-strong);
+  font-weight: 850;
+}
+
+.method-grid p {
+  margin-bottom: 0;
+}
+
 .cta-band {
   display: flex;
   align-items: center;
@@ -534,6 +602,13 @@ h3 {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--surface);
+}
+
+.cta-actions {
+  flex: 0 0 auto;
+  justify-content: flex-end;
+  max-width: 430px;
+  margin-top: 0;
 }
 
 .detail-card,
@@ -865,13 +940,20 @@ h3 {
   .service-detail-grid,
   .product-grid,
   .project-grid,
-  .values-grid {
+  .values-grid,
+  .method-grid,
+  .fit-grid {
     grid-template-columns: 1fr;
   }
 
   .cta-band {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .cta-actions {
+    justify-content: flex-start;
+    max-width: none;
   }
 }
 
