@@ -1178,7 +1178,11 @@ h3 {
     display: none;
   }
 
-  .service-grid-mobile-carousel {
+  .service-grid-mobile-carousel,
+  .service-detail-grid.mobile-feed-carousel,
+  .product-grid.mobile-feed-carousel,
+  .project-grid.mobile-feed-carousel,
+  .values-grid.mobile-feed-carousel {
     display: grid;
     grid-template-columns: none;
     grid-auto-flow: column;
@@ -1191,9 +1195,14 @@ h3 {
     -webkit-overflow-scrolling: touch;
   }
 
-  .service-grid-mobile-carousel .service-card {
+  .service-grid-mobile-carousel .service-card,
+  .service-detail-grid.mobile-feed-carousel > *,
+  .product-grid.mobile-feed-carousel > *,
+  .project-grid.mobile-feed-carousel > *,
+  .values-grid.mobile-feed-carousel > * {
     scroll-snap-align: start;
     min-width: 0;
+    width: auto;
   }
 
   .mobile-feed-carousel {
@@ -1212,6 +1221,15 @@ h3 {
   .mobile-feed-carousel > * {
     scroll-snap-align: start;
     min-width: 0;
+    width: auto;
+  }
+
+  .service-grid-mobile-carousel > :first-child,
+  .service-detail-grid.mobile-feed-carousel > :first-child,
+  .product-grid.mobile-feed-carousel > :first-child,
+  .project-grid.mobile-feed-carousel > :first-child,
+  .values-grid.mobile-feed-carousel > :first-child {
+    margin-left: 0;
   }
 
   .mobile-scroll-hint {
@@ -1287,6 +1305,11 @@ h3 {
     min-height: auto;
   }
 
+  .product-card {
+    display: grid;
+    grid-template-rows: auto 1fr;
+  }
+
   .detail-card img {
     aspect-ratio: 16 / 9;
     max-height: 168px;
@@ -1294,17 +1317,27 @@ h3 {
   }
 
   .product-media {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
     aspect-ratio: 16 / 10;
     min-height: 120px;
+    max-height: 190px;
   }
 
   .product-logo-image img {
     object-fit: contain;
+    object-position: center;
     padding: 8px;
   }
 
   .product-content {
-    padding: 18px;
+    position: relative;
+    z-index: 2;
+    margin-top: 0;
+    padding: 20px;
+    background: var(--surface);
+    border-top: 1px solid var(--line);
   }
 
   .product-content h2 {
@@ -1370,7 +1403,7 @@ h3 {
   }
 
   .product-content {
-    padding: 22px;
+    padding: 20px;
   }
 }
 
