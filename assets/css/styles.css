@@ -236,6 +236,14 @@ h3 {
   font-size: clamp(1.05rem, 2.3vw, 1.28rem);
 }
 
+.brand-slogan {
+  margin: 1rem 0 0;
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  font-weight: 600;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.92);
+}
+
 .section {
   padding: 92px 0;
 }
@@ -962,6 +970,14 @@ h3 {
   font-weight: 750;
 }
 
+.footer-slogan {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.82);
+}
+
 .mobile-cta-bar {
   display: none;
 }
@@ -1156,6 +1172,12 @@ h3 {
   .lead {
     font-size: 1rem;
     line-height: 1.45;
+  }
+
+  .brand-slogan {
+    margin-top: 0.85rem;
+    font-size: 0.98rem;
+    line-height: 1.4;
   }
 
   .hero-visual-mobile-hide {
@@ -1404,6 +1426,10 @@ h3 {
 
   .product-content {
     padding: 20px;
+  }
+
+  .footer-slogan {
+    font-size: 0.9rem;
   }
 }
 
