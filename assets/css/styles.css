@@ -1180,12 +1180,14 @@ h3 {
 
   .service-grid-mobile-carousel {
     display: grid;
+    grid-template-columns: none;
     grid-auto-flow: column;
     grid-auto-columns: minmax(78%, 86%);
     overflow-x: auto;
     gap: 14px;
-    padding: 0 2px 10px;
+    padding: 0 6px 10px;
     scroll-snap-type: x mandatory;
+    scroll-padding-inline: 6px;
     -webkit-overflow-scrolling: touch;
   }
 
@@ -1196,12 +1198,14 @@ h3 {
 
   .mobile-feed-carousel {
     display: grid;
+    grid-template-columns: none;
     grid-auto-flow: column;
     grid-auto-columns: minmax(78%, 86%);
     overflow-x: auto;
     gap: 14px;
-    padding: 0 2px 10px;
+    padding: 0 6px 10px;
     scroll-snap-type: x mandatory;
+    scroll-padding-inline: 6px;
     -webkit-overflow-scrolling: touch;
   }
 
