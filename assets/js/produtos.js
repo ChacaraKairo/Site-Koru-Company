@@ -119,15 +119,7 @@ function renderProducts() {
       link.rel = 'noopener noreferrer';
     }
 
-    const contact = document.createElement('a');
-    const message = `Olá, vi o produto ${product.nome} no site da Koru Company e quero entender como ele pode ajudar minha empresa.`;
-    contact.className = 'btn btn-primary product-contact';
-    contact.href = createWhatsAppLink(message);
-    contact.target = '_blank';
-    contact.rel = 'noopener noreferrer';
-    contact.textContent = `Falar sobre ${product.nome}`;
-
-    content.append(status, title, description, details, link, contact);
+    content.append(status, title, description, details, link);
     card.append(createProductLogo(product), content);
     list.append(card);
   });
