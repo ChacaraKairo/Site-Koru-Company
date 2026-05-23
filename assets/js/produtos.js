@@ -46,6 +46,7 @@ const PRODUTOS = [
   },
 ];
 
+
 function createProductLogo(product) {
   const wrapper = document.createElement('div');
   wrapper.className = product.logo ? 'product-media product-logo-image' : 'product-media product-logo-fallback';
@@ -118,7 +119,15 @@ function renderProducts() {
       link.rel = 'noopener noreferrer';
     }
 
-    content.append(status, title, description, details, link);
+    const contact = document.createElement('a');
+    const message = `Olá, vi o produto ${product.nome} no site da Koru Company e quero entender como ele pode ajudar minha empresa.`;
+    contact.className = 'btn btn-primary product-contact';
+    contact.href = createWhatsAppLink(message);
+    contact.target = '_blank';
+    contact.rel = 'noopener noreferrer';
+    contact.textContent = `Falar sobre ${product.nome}`;
+
+    content.append(status, title, description, details, link, contact);
     card.append(createProductLogo(product), content);
     list.append(card);
   });
