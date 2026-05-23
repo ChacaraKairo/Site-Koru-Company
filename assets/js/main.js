@@ -91,7 +91,20 @@ function setupContactForm() {
   });
 }
 
+function setupMethodToggle() {
+  const button = document.querySelector('[data-method-toggle]');
+  const grid = document.querySelector('.method-grid');
+  if (!(button instanceof HTMLButtonElement) || !(grid instanceof HTMLElement)) return;
+
+  button.addEventListener('click', () => {
+    const expanded = grid.classList.toggle('is-expanded');
+    button.setAttribute('aria-expanded', String(expanded));
+    button.textContent = expanded ? 'Ver versão resumida' : 'Ver metodologia completa';
+  });
+}
+
 setupMenu();
 setupFloatingWhatsapp();
 setupWhatsappLinks();
 setupContactForm();
+setupMethodToggle();
